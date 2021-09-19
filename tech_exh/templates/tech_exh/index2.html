@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>GLOBE</title>
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- chartjs -->
+    <script type="text/javascript" src= "https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
+    <!-- mapbox -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@sakitam-gis/mapbox-wind/dist/mapbox-wind.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href='{% static "tech_exh/css/arrange.css" %}'>
+    <link rel="stylesheet" href='{% static "tech_exh/css/animation.css" %}'>
+</head>
+<style>
+body { margin: 0; padding: 0; height: 100vh;overflow: hidden;}
+#map{height: 100vh;width: 100vw;}
+#page{position: absolute;top:0;left:0;width: 100vw;height:100vh;overflow: hidden;background-color: black;}
+</style>
+<style>
+</style>
+<body>
+    <div id="map"></div>
+    <div class="map-overlay" id="overlay-header">
+        <h2>当前数据展示范围:</h2>
+        <button>选择地区</button>
+    </div>
+    <div class="map-overlay" id="overlay-region">
+        <ul>
+            <li><button id="global">全球范围</button></li>
+            <li><button id="china">中国</button></li>
+            <li><button id="huadong">华东地区</button></li>
+            <li><button id="huanan">华南地区</button></li>
+            <li><button id="huazhong">华中地区</button></li>
+            <li><button id="huabei">华北地区</button></li>
+            <li><button id="xibei">西北地区</button></li>
+            <li><button id="xinan">西南地区</button></li>
+            <li><button id="dongbei">东北地区</button></li>
+        </ul>
+    </div>
+    <div class="map-overlay" id="overlay-1">
+        <div class="map-overlay-header">
+            <div class="header-icon-area" style="height: 30px;"><img src='{% static "tech_exh/img/icon-temperature.png" %}'></div>
+            <div class="header-text-area" ><h2 style="font-size: 30px;line-height: 30px;">气温</h2></div>
+            <div class="header-text-area"><h3>距平</h3></div>
+            <div id="enlarge-1" class="header-icon-area enlarge-button" style="position: absolute;left:auto;right: 10px;width: 20px;"><img src='{% static "tech_exh/img/icon_enlarge.png" %}'></div>
+
+        </div>
+        <div class="chart" id="chart-1"></div>
+    </div>
+    <div class="map-overlay down-overlay" id="overlay-2">
+        <div class="map-overlay-header">
+            <div class="header-icon-area"><img src='{% static "tech_exh/img/icon-jiangshui.png" %}'></div>
+            <div class="header-text-area"><h2>降水</h2></div>
+            <div class="header-text-area"><h3>距平</h3></div>
+            <div id="enlarge-2" class="header-icon-area enlarge-button" style="position: absolute;left:auto;right: 10px;width: 20px;"><img src='{% static "tech_exh/img/icon_enlarge.png" %}'></div>
+
+        </div>
+        <div class="chart" id="chart-2"></div>
+    </div>
+    <div class="map-overlay down-overlay" id="overlay-3">
+        <div class="map-overlay-header">
+            <div class="header-icon-area"><img src='{% static "tech_exh/img/icon-water.png" %}' ></div>
+            <div class="header-text-area"><h2>湿度</h2></div>
+            <div class="header-text-area"><h3>距平</h3></div>
+            <div id="enlarge-3" class="header-icon-area enlarge-button" style="position: absolute;left:auto;right: 10px;width: 20px;"><img src='{% static "tech_exh/img/icon_enlarge.png" %}'></div>
+        </div>
+        <div class="chart" id="chart-3"></div>
+    </div>
+    <div class="map-overlay down-overlay" id="overlay-4">
+        <div class="map-overlay-header">
+            <div class="header-icon-area"><img src='{% static "tech_exh/img/icon-pressure_gauge.png" %}'></div>
+            <div class="header-text-area"><h2>气压</h2></div>
+            <div class="header-text-area"><h3>距平</h3></div>
+            <div id="enlarge-4" class="header-icon-area enlarge-button" style="position: absolute;left:auto;right: 10px;width: 20px;"><img src='{% static "tech_exh/img/icon_enlarge.png" %}'></div>
+
+        </div>
+        <div class="chart" id="chart-4"></div>
+    </div>
+    <div class="map-overlay down-overlay" id="overlay-5">
+        <div class="map-overlay-header">
+            <div class="header-icon-area"><img src='{% static "tech_exh/img/icon-sun.png" %}'></div>
+            <div class="header-text-area"><h2>光照</h2></div>
+            <div class="header-text-area"><h3>距平</h3></div>
+            <div id="enlarge-5" class="header-icon-area enlarge-button" style="position: absolute;left:auto;right: 10px;width: 20px;"><img src='{% static "tech_exh/img/icon_enlarge.png" %}'></div>
+
+        </div>
+        <div class="chart" id="chart-5"></div>
+    </div>
+    <div class="map-overlay" id="overlay-icon" style="left:auto;right:20px;height:;backdrop-filter:blur(0px);background:none;height: auto;width:10vw;padding: 0;padding-top: 10px;text-align: center;color: white;">
+        <h1 style="font-size: 20px;font-stretch:extra-expanded;font-weight: 300;"><span style="font-weight: bold;">NUIST</span> CFS</h1>
+        <h2 style="font-size: 10px;font-weight: 100;">南京信息工程大学气候预测系统</h2>
+        
+    </div>
+    <div class="map-overlay"  id="overlay-control" style="display: flex;">
+        <div style="display: inline-flex; flex-direction:column;flex:1;">
+            <div style="flex: 1;" id="control_charts">
+                <div class="control-button">
+                    <img src= '{% static "tech_exh/img/icon-charts.svg" %}'alt="">
+                </div>
+            </div>
+            <div style="flex: 1;" id="control_wind">
+                <div class="control-button">
+                    <img src='{% static "tech_exh/img/icon-wind.svg" %}' alt="">
+                </div>
+            </div>
+            <div style="flex: 1;" id="control_play">
+                <div class="control-button">
+                    <img src='{% static "tech_exh/img/icon-play.svg" %}' alt="">
+                </div>
+            </div>
+            <div style="flex:1;text-align: center;display:none;">
+                <div class="custom-control ">
+                    <input type="range" min="0" max="23" id="time" style=" -webkit-appearance: slider-vertical;">
+                </div>
+            </div>
+
+
+            <input type="checkbox"  id="switch1" style="display: none;">
+            <!-- <label class="custom-control-label" for="switch1">季风</label> -->
+            <input type="checkbox" id="switch2" value="animation" style="display: none;">
+            <!-- <label class="custom-control-label" for="switch2">动画触发</label> -->
+        </div>
+    </div>
+    <div class="map-overlay" id="overlay-status" style="background-color: white;bottom: calc(25vh + 60px);right:30px;top:auto;left: auto;height: 50px;width: 15vw;border-radius:30px;padding-top:0;padding-bottom:0;padding-left: 20px;display: flex;align-items:center;">
+        <div style="flex:1;height: 32px;">
+            <div style="display:inline-block;width: 32px;height: 32px;border: 2px solid #FE6060;border-radius: 50%;opacity: 1;padding-top: 6px;padding-left: 6px;"><div style="width: 16px;height: 16px;background: #FF6060;border-radius: 50%;opacity: 1;"></div></div>
+        </div>
+        <div style="flex:3;display: inline-block;"><h2 style="margin:0;font-size: 15px;line-height: 15px;display: inline-block;" id="status_text"></h2></div>
+        
+    </div>
+    <div class="map-overlay" id="overlay-tianditu" style="background-color: rgba(255,255,255,0.5);bottom: 0;right:0px;top:auto;left: auto;height: 20px;width: 200px;border-radius:30px;padding:0;display: flex;align-items:center;border-radius:0;color:black;padding-left:30px;">
+        审图号：GS(2021)3715号
+    </div>
+
+    <div id="page">
+        <img src='{% static "tech_exh/img/earth.png" %}' alt="" style="width:100%;">
+    </div>
+    <div id="home-overlay" class="home-overlay">
+        <div class="home-overlay-inner">
+            <h1><span>NUIST</span> CFS</h1>
+            <h2>南京信息工程大学气候预测系统</h2>
+            <div id="home-btn"><button>START</button></div>
+        </div>
+        <!-- <div id="globalArea"></div> -->
+    </div>
+
+</body>
+</html>
+<script src='{% static "tech_exh/js/domOp.js" %}'></script>
+<script src='{% static "tech_exh/js/gen-chart.js" %}'></script>
+<script src='{% static "tech_exh/js/renderwind.js" %}'></script>
+<script>
+$("#home-btn").css('background-color','gray')
+$("#page").css('cursor','wait');
+$("#home-overlay").css('cursor','wait');
+$("#home-btn button").html('LOADING').css('background-color','gray').css('cursor','wait').attr('disabled',true);
+setTimeout(()=>{
+    $("#home-btn").css('background-color','white');
+    $("#page").css('cursor','auto');
+    $("#home-overlay").css('cursor','auto');
+    $("#home-btn button").html('START').css('background-color','white').css('cursor','pointer').attr('disabled',false);
+},6000)
+var chart_data;
+var heatmap_data;
+var rendered_num = 0;
+const map = map_init();
+bindEvents();
+$("#status_text").html('数据加载中');
+function addRasterTileLayer(map, url, sourceId, layerId) {
+    if(sourceId=='cvaw'){
+        map.addSource(sourceId, {
+            type: 'raster',
+            tiles: [url],
+            tileSize: 256,
+            maxzoom:7,
+        });
+        map.addLayer({
+            id: layerId,
+            type: 'raster',
+            source: sourceId
+        });
+    }else{
+        map.addSource(sourceId, {
+            type: 'raster',
+            tiles: [url],
+            tileSize: 256,
+        });
+        map.addLayer({
+            id: layerId,
+            type: 'raster',
+            source: sourceId
+        });
+    }
+}
+map.on('load',()=>{
+        // setTimeout(()=>{
+        //     $("#switch1").click();
+        // },1000);
+        // setTimeout(()=>{
+        //     $("#switch1").click();
+        // },2000);
+        for(var i = 0;i<24;i++){
+            nc_data_url = 'http://localhost:8000/static/tech_exh/data/ncdata'+i+'.geojson';
+            render_heatmap(nc_data_url);
+            rendered_num++;
+        };
+
+// $("#status_text").html('地图渲染完成');
+// $("#control_charts").css('pointer-events','none');
+// $("#control_wind").css('pointer-events','none');
+// $("#control_play").css('pointer-events','none');
+});
+$.ajax({
+    url:'http://78.141.244.84:8000/tech/getdata?district=all_region',
+    crossDomain: true,
+    type:'GET',
+    data:null,
+    processData:false,
+    contentType:false,
+    success:function(ret){
+        console.log('success')
+        if(ret!=null){
+            console.log(ret)
+            chart_data = ret;
+        }
+        $("#status_text").html('数据加载完成');
+
+    }
+});
+
+</script>
+
+

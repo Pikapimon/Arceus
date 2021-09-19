@@ -1,0 +1,387 @@
+html{
+    user-select: none;
+}
+.home-overlay{
+    position: absolute;
+    width: 40vw;
+    height: 100vh;
+    top:0;
+    left:0;
+
+}
+.home-overlay-inner{
+    margin-left: 17%;
+    margin-top: 35%;
+    width: 83%;
+    height: 100%;
+}
+.home-overlay-inner h1{
+    font-size: 10vh;
+    font-weight: 200;
+    color: white;
+}
+.home-overlay-inner h1 span{
+    font-weight: bold;
+}
+.home-overlay-inner h2{
+    font-size: 4vh;
+    font-weight: 200;
+    color:white;
+}
+
+#home-btn{
+    margin-top: 10vh;
+    width: 7vw;
+    height: 6vh;
+    border-color: white;
+    border-radius: 6vw;
+    background-color: white;
+}
+* button{
+    width: 7vw;
+    height: 6vh;
+    display: block;
+    /*margin-top: 10vh;*/
+    border:none;
+    outline: none;
+    border-radius: 1.7vw;
+    background-color:white;
+    outline: none;
+    font-weight: bold;
+    font-size: 100%;
+}
+.map-overlay {
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    position: absolute;
+    width: 23vw;
+    height: 24vh;
+    background-color: rgba(0,0,0,0.3);
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    /*border:1px solid red;*/
+    padding-left: 10px;
+    padding-top: 30px;
+    padding-right: 20px;
+    padding-bottom: 30px;
+    backdrop-filter:blur(10px);
+}
+/*.map-overlay::after {
+  content: '';
+  position: absolute;
+  top:0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 20px;
+  opacity: 1;
+  background-attachment: fixed;
+  filter: blur(30px);
+  z-index: -1;
+  }*/
+  #overlay-1{
+    height: calc(100vh - 32vh - 120px);
+    width:calc((100vw - 150px) / 4);
+    left:calc(-1 * (100vw - 150px) / 4);
+    top:calc(7vh + 60px);
+}
+#overlay-2{
+    height: 25vh;
+    left: 30px;
+    top:auto;
+    bottom:-25vh;
+}
+#overlay-3{
+    height: 25vh;
+    left: calc( 60px + (100vw - 150px) / 4);
+    top:auto;
+    bottom:-25vh;
+}
+#overlay-4{
+    height: 25vh;
+    left: calc(90px + (100vw - 150px) / 2);
+    top:auto;
+    bottom:-25vh;
+}
+#overlay-5{
+    height: 25vh;
+    left: auto;
+    right: 30px;
+    top:auto;
+    bottom:-25vh;
+}
+/*左上角选择区域*/
+#overlay-header{
+    display: flex;
+    width:calc((100vw - 150px) / 4);
+    top: 30px;
+    left:calc(-1 * (100vw - 150px) / 4);
+    height: 7vh;
+    border-radius: 100px;
+    padding: 0;
+    padding-left: 30px;
+    align-items: center;
+    font-size: 17px;
+}
+#overlay-header h2{
+    display: inline-block;
+    flex:6;
+    color: white;
+    margin: 0;
+    vertical-align: baseline;
+    font-size: inherit;
+}
+#overlay-header button{
+    margin-top:0;
+    margin: 0;
+    padding:0;
+    height: 100%;
+    border-radius: 100px;
+    flex:5;
+    outline: none;
+}
+#overlay-header button:after{
+    content: "";
+    display: inline-block;
+    position: relative;
+    color:black;
+    left:10px;
+    width: 0;
+    height: 0;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent black;
+}
+/*地区选择区域*/
+li{
+    list-style: none;
+}
+#overlay-region{
+    display: flex;
+    border-radius: 15px;
+    width:150px;
+    background-color: white;
+    min-width: 100px;
+    left:calc(30px + 25vw);
+    left:calc(30px + max(25vw , 400px));
+    top:2vh;
+    padding: 0;
+    height: auto;
+    visibility: hidden;
+}
+#overlay-region ul{
+    position: relative;
+    left: -10px;
+    width:100%;
+    padding:0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0;
+}
+#overlay-region:before{
+    content: "";
+    display: block;
+    position: relative;
+    left:-20px;
+    top:20px;
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent white transparent transparent;
+}
+
+#overlay-region li{
+    width: 100%;
+}
+#overlay-region button{
+    width: 100%;
+    height: 50px;
+    border-radius: 0;
+    font-size: 14px;
+    color: gray;
+    outline: none;
+    font-weight: normal;
+}
+#overlay-region button:hover{
+    color:black;
+}
+#overlay-region button .selceted{
+    font-weight: bold;
+}
+#overlay-region li:after{
+    display: block;
+    content: "";
+    width: 50%;
+    margin-left: 25%;
+    height: 0px;
+    border-top:1px solid rgba(0,0,0,0.1);
+}
+#overlay-region li:last-child{
+    border-bottom-left-radius:20px; 
+    border-bottom-right-radius: 20px;
+}
+#overlay-region li:last-child button{
+    border-bottom-left-radius:20px; 
+    border-bottom-right-radius: 20px;
+}
+#overlay-region li:first-child{
+    border-top-left-radius:20px; 
+    border-top-right-radius: 20px;
+}
+#overlay-region li:first-child button{
+    border-top-left-radius:20px; 
+    border-top-right-radius: 20px;
+}
+#overlay-region li:last-child:after{
+    display: block;
+    content: "";
+    width: 50%;
+    margin-left: 25%;
+    height: 0px;
+    border-top:none;
+}
+/*控制区域*/
+#overlay-control{
+    color: white;
+    font-size: 14px;
+    height: calc(15vh - 20px);
+    left:-23vw;
+    top:calc(7vh + 30px);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.map-overlay .map-overlay-header{
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 15%;
+    margin-bottom: 20px;
+    vertical-align: bottom;
+}
+.header-icon-area{
+    display: inline-block;
+    /*position: absolute;*/
+    margin-left: 20px;
+    left: 0;
+    width: auto;
+    height: 20px;
+    vertical-align: bottom;
+}
+.header-icon-area img{
+    bottom: 0;
+    display: block;
+    height: 100%;
+    margin: auto;
+    vertical-align: bottom;
+}
+.header-text-area{
+    display: inline-block;
+    /*position: absolute;*/
+    margin-left: 15px;
+    width: auto;
+    height: auto;
+    align-items: center;
+    vertical-align: bottom;
+}
+.header-text-area h2{
+    font-size: 18px;
+    display: inline-block;
+    line-height: 18px;
+    width: auto;
+    margin: 0;
+    color:white;
+    vertical-align: bottom;
+}
+.header-text-area h3{
+    display: inline-block;
+    line-height: 1em;
+    height: auto;
+    width: auto;
+    margin: 0;
+    color:gray;
+    font-size: 12px;
+    vertical-align: bottom;
+}
+
+.map-overlay-inner button {
+    display: inline-block;
+    min-width: 36px;
+    height: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.map-overlay-inner button:focus {
+    outline: none;
+}
+
+.map-overlay-inner button:hover {
+    box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+.map-overlay input {
+    background-color: transparent;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    cursor: ew-resize;
+}
+.down-overlay{
+    height: 25vh;
+    width:calc((100vw - 150px) / 4);
+    top:74vh;
+    padding:10px;
+    padding-top: 30px;
+    padding-bottom: 0;
+}
+.down-overlay .map-overlay-header{
+    display: block;
+    width: 100%;
+    height: 15%;
+    margin-bottom: 0;
+}
+.down-overlay h2{
+    font-size: 20px;
+}
+.chart{
+    display: block;
+    height:calc(85% - 20px);
+}
+/*控制区域*/
+#overlay-control{
+    border-radius: 0;
+    color: white;
+    font-size: 14px;
+    height: auto;
+    width: 50px;
+    left:auto;
+    right: 20px;
+    top:calc(7vh + 30px);
+    /*padding-top: 10px;
+    padding-bottom: 10px;*/
+    padding:0;
+    background: none;
+    backdrop-filter:blur(0px);
+}
+.control-button{
+    width:50px;
+    height: 50px;
+    background-color: rgba(0,0,0,0.3);
+    backdrop-filter:blur(10px);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.control-button:hover{
+    background-color: rgba(100,100,100,0.3);
+    cursor: pointer;
+}
+.control-button img{
+    height: 30px;
+    width:30px;
+}
+.enlarge-button:hover{
+    cursor: pointer;
+    background-color: gray;
+}
