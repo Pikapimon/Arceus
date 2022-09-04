@@ -18,6 +18,10 @@ class Dodger(models.Model):
         max_length=255, null=False, default='6g1OZbvm')
     mail_addr = models.CharField(max_length=255, null=False, default='')
     valid_times = models.IntegerField(default=5)
+    instructor_name = models.CharField(max_length=255, default='左香草')
+    secretary_name = models.CharField(max_length=255, default='叶玉娣')
+    gender = models.CharField(max_length=255, default='男')
+    major = models.CharField(max_length=255, default='计算机科学与技术')
 
     def __str__(self):
         return self.name

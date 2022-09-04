@@ -1,0 +1,83 @@
+*{
+	font-family: monospace;
+	outline: none;
+}
+.bs_bgred{
+	background-color: rgba(215,75,75,1);
+	color:white;
+}
+.bs_bgblue{
+	background-color: rgba(0,87,146,1);
+	color:white;
+}
+.bs_bgblack{
+	background-color: rgba(0,0,0,0);
+	color:white;
+}
+.bs_bgpurple{
+	background-color: rgba(129,52,175,1);
+	color:rgba(246,208,77,1);
+}
+.bs_bgpink{
+	background-color: rgba(221,223,230,1);
+	color:rgba(246,208,77,1);
+	}
+
+.bs_title{
+	font-size: 20px;
+	font-weight: 800;
+	text-shadow: 0px 3px 0px black;
+}
+div.bs_container{
+	box-sizing: border-box;
+	align-items: center;
+	position: relative;
+	width:90%;
+	height: 90%;
+	border:3px solid gray;
+	border-radius: 3px;
+	box-shadow: -2px 2px 5px #dddddd;
+	margin: auto;
+	padding:4%;
+	padding-left: 10%;
+	padding-right: 7%;
+}
+div.bs_button{
+	text-align: center;
+	display:flex;
+    align-items:center;
+    justify-content:center;
+}
+div.bs_button button{ /*描述阴影和斜角*/
+	outline: none;
+	border:3px solid black;
+	transform: skewX(-5deg);
+	margin: auto auto;
+	width: 100%;
+	height: 100%;
+	font-size: 20px;
+	font-weight: 800;
+	text-shadow: 0px 3px 0px black;
+	box-shadow: 2px 2px 5px black;
+}
+div.bs_button button:before{ /*上下阴影*/
+	content: '';
+	position:absolute;
+	padding: 0;
+	margin: 0;
+	top: 0;left: 0;bottom: 0;right:0;
+	border-top: 3px solid rgba(255,255,255,0.3);
+	border-bottom: 3px solid rgba(0,0,0,0.3);
+}
+div.bs_button button>*{
+	transform: skewX(5deg);
+}
+div.bs_button:hover button{
+	cursor: pointer;
+}
+div.bs_hover_big .bs_content{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+}

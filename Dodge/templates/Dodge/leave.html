@@ -76,13 +76,13 @@
 				<p>流水号: 1347038</p>
 			</div>
 		</div>
-		<div style="width:100%;background-color: rgb(237,237,237);height: 140px;">
+		<div style="width:100%;background-color: rgb(237,237,237);height: 130px; margin-bottom: 10px;box-shadow: 5px 5px 5px #cccccc;">
 			<div class="ilb" style="width:100%;height: 110px;">
 				<div class="ilb" style="width:80%;color: green;">
 					<div class="ilb" style="width: 10px;"></div>
-					<div class="ilb" style="width: 80%;font-weight: bold;">
-						<span><div style="display:inline-block;color: green;box-shadow: 3px 3px 3px black;border-radius: 4px;box-shadow: 0px 5px 5px #cccccc;padding-top: 30px;font-size: 40px;text-align: center;width: 300px;">确认销假</div></span>
-						<span><div style="color: #2470a0;display:inline-block;box-shadow: 3px 3px 3px black;border-radius: 4px;box-shadow: 0px 5px 5px #cccccc;padding-top: 30px;font-size: 40px;text-align: center;width: 300px;">终止</div></span>
+					<div class="ilb" style="width: 80%;font-weight: bold;margin-top: 10px;">
+						<span><div style="display:inline-block;color: green;box-shadow: 3px 3px 3px black;border-radius: 4px;box-shadow: 5px 5px 2px #cccccc;padding-top: 20px;padding-bottom: 20px; font-size: 40px;text-align: center;width: 300px;">确认销假</div></span>
+						<span><div style="color: #2470a0;display:inline-block;box-shadow: 3px 3px 3px black;border-radius: 4px;box-shadow: 5px 5px 2px #cccccc;padding-top: 20px;font-size: 40px;padding-bottom: 20px; text-align: center;width: 300px;">终止</div></span>
 					</div>
 				</div>
 				<div class="ilb" style="width:10%;">
@@ -219,6 +219,10 @@
 			<tr><td><div style="height: 200px;"></div></td></tr>
 			<tr><td>审批人</td><td>{{secretary_name}}</td></tr>
 			<tr><td>审批时间</td><td>{{now_date}}</td></tr>
+			<tr><td>苏康码</td><td><img src="{% static 'Dodge/qrCodeImg.png' %}" alt="" style="height: 30px;"></td></tr>
+			<tr><td>行程码</td><td></td></tr>
+			<tr><td>24小时内核酸检测</td><td></td></tr>
+
 		</table>
 
 		<div id="tb2" style="border:2px dashed black;width:83%;margin-left:10%;display:none;">

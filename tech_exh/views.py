@@ -60,3 +60,6 @@ def get_data(request):
 
 def map_home(request):
     return render(request, 'tech_exh/index2.html')
+
+
+

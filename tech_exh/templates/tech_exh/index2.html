@@ -6,35 +6,37 @@
     <title>GLOBE</title>
 
     <!-- BootStrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href='{% static "tech_exh/css/bootstrap.min.css" %}'>
+    <script src='{% static "tech_exh/js/jquery.min.js" %}'></script>
+    <script src='{% static "tech_exh/js/popper.min.js" %}'></script>
+    <script src='{% static "tech_exh/js/bootstrap.min.js" %}'></script>
     <!-- chartjs -->
-    <script type="text/javascript" src= "https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
+    <script type="text/javascript" src= '{% static "tech_exh/js/chart.min.js" %}'></script>
     <!-- mapbox -->
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/@sakitam-gis/mapbox-wind/dist/mapbox-wind.js"></script>
+    <link href='{% static "tech_exh/css/mapbox-gl.css" %}' rel="stylesheet">
+    <script src='{% static "tech_exh/js/mapbox-gl.js" %}'></script> 
+    <script type="text/javascript" src= '{% static "tech_exh/js/mapbox-wind.js" %}'></script>
     {% load static %}
     <link rel="stylesheet" href='{% static "tech_exh/css/arrange.css" %}'>
     <link rel="stylesheet" href='{% static "tech_exh/css/animation.css" %}'>
 </head>
 <style>
-body { margin: 0; padding: 0; height: 100vh;overflow: hidden;}
-#map{height: 100vh;width: 100vw;}
-#page{position: absolute;top:0;left:0;width: 100vw;height:100vh;overflow: hidden;background-color: black;}
+    body{ margin: 0; padding: 0; height: 100vh;overflow: hidden;}
+    #map{height: 100vh;width: 100vw;}
+    #page{position: absolute;top:0;left:0;width: 100vw;height:100vh;overflow: hidden;background-color: black;}
 </style>
 <style>
 </style>
 <body>
     <div id="map"></div>
-    <div class="map-overlay" id="overlay-header">
-        <h2>当前数据展示范围:</h2>
-        <button>选择地区</button>
+    
+    <div class="map-overlay overlay-header" id="overlay-header">
+        <h2 style="text-align:center">选择地区</h2>
+        <button>全球</button>
     </div>
-    <div class="map-overlay" id="overlay-region">
+    
+    <div class="map-overlay overlay-list" id="overlay-region">
         <ul>
             <li><button id="global">全球范围</button></li>
             <li><button id="china">中国</button></li>
@@ -51,7 +53,7 @@ body { margin: 0; padding: 0; height: 100vh;overflow: hidden;}
         <div class="map-overlay-header">
             <div class="header-icon-area" style="height: 30px;"><img src='{% static "tech_exh/img/icon-temperature.png" %}'></div>
             <div class="header-text-area" ><h2 style="font-size: 30px;line-height: 30px;">气温</h2></div>
-            <div class="header-text-area"><h3>距平</h3></div>
+            <div class="header-text-area"><h3>(°C) 距平</h3></div>
             <div id="enlarge-1" class="header-icon-area enlarge-button" style="position: absolute;left:auto;right: 10px;width: 20px;"><img src='{% static "tech_exh/img/icon_enlarge.png" %}'></div>
 
         </div>
@@ -61,9 +63,8 @@ body { margin: 0; padding: 0; height: 100vh;overflow: hidden;}
         <div class="map-overlay-header">
             <div class="header-icon-area"><img src='{% static "tech_exh/img/icon-jiangshui.png" %}'></div>
             <div class="header-text-area"><h2>降水</h2></div>
-            <div class="header-text-area"><h3>距平</h3></div>
+            <div class="header-text-area"><h3>(mm/day) 距平</h3></div>
             <div id="enlarge-2" class="header-icon-area enlarge-button" style="position: absolute;left:auto;right: 10px;width: 20px;"><img src='{% static "tech_exh/img/icon_enlarge.png" %}'></div>
-
         </div>
         <div class="chart" id="chart-2"></div>
     </div>
@@ -71,7 +72,7 @@ body { margin: 0; padding: 0; height: 100vh;overflow: hidden;}
         <div class="map-overlay-header">
             <div class="header-icon-area"><img src='{% static "tech_exh/img/icon-water.png" %}' ></div>
             <div class="header-text-area"><h2>湿度</h2></div>
-            <div class="header-text-area"><h3>距平</h3></div>
+            <div class="header-text-area"><h3>(%) 距平</h3></div>
             <div id="enlarge-3" class="header-icon-area enlarge-button" style="position: absolute;left:auto;right: 10px;width: 20px;"><img src='{% static "tech_exh/img/icon_enlarge.png" %}'></div>
         </div>
         <div class="chart" id="chart-3"></div>
@@ -80,7 +81,7 @@ body { margin: 0; padding: 0; height: 100vh;overflow: hidden;}
         <div class="map-overlay-header">
             <div class="header-icon-area"><img src='{% static "tech_exh/img/icon-pressure_gauge.png" %}'></div>
             <div class="header-text-area"><h2>气压</h2></div>
-            <div class="header-text-area"><h3>距平</h3></div>
+            <div class="header-text-area"><h3>(Pa) 距平</h3></div>
             <div id="enlarge-4" class="header-icon-area enlarge-button" style="position: absolute;left:auto;right: 10px;width: 20px;"><img src='{% static "tech_exh/img/icon_enlarge.png" %}'></div>
 
         </div>
@@ -90,32 +91,61 @@ body { margin: 0; padding: 0; height: 100vh;overflow: hidden;}
         <div class="map-overlay-header">
             <div class="header-icon-area"><img src='{% static "tech_exh/img/icon-sun.png" %}'></div>
             <div class="header-text-area"><h2>光照</h2></div>
-            <div class="header-text-area"><h3>距平</h3></div>
+            <div class="header-text-area"><h3>(W/m²) 距平</h3></div>
             <div id="enlarge-5" class="header-icon-area enlarge-button" style="position: absolute;left:auto;right: 10px;width: 20px;"><img src='{% static "tech_exh/img/icon_enlarge.png" %}'></div>
 
         </div>
         <div class="chart" id="chart-5"></div>
     </div>
-    <div class="map-overlay" id="overlay-icon" style="left:auto;right:20px;height:;backdrop-filter:blur(0px);background:none;height: auto;width:10vw;padding: 0;padding-top: 10px;text-align: center;color: white;">
-        <h1 style="font-size: 20px;font-stretch:extra-expanded;font-weight: 300;"><span style="font-weight: bold;">NUIST</span> CFS</h1>
-        <h2 style="font-size: 10px;font-weight: 100;">南京信息工程大学气候预测系统</h2>
-        
+    <div class="map-overlay" id="overlay-icon" style="background-color:rgba(0,0,0,0);left:auto;right:20px;height:;backdrop-filter:blur(0px);height: auto;width:10vw;padding: 0;padding-top: 10px;padding-left:10px;padding-right:10px;border-radius:5px;color: white;text-shadow: 0.1em 0.1em 0.2em black;min-width: 256px;">
+        <!-- <div style="width: 100%;font-size: 25px;font-weight: 700;text-align: center;display: flex;">
+            <div style="flex:1;display: inline-block;"><h1>N</h1></div>
+            <div style="flex:1;display: inline-block;"><h1>U</h1></div>
+            <div style="flex:1;display: inline-block;"><h1>I</h1></div>
+            <div style="flex:1;display: inline-block;"><h1>S</h1></div>
+            <div style="flex:1;display: inline-block;"><h1>T</h1></div>
+            <div style="flex:1;display: inline-block;"><h1 style="font-weight: 300;">C</h1></div>
+            <div style="flex:1;display: inline-block;"><h1 style="font-weight: 300;">F</h1></div>
+            <div style="flex:1;display: inline-block;"><h1 style="font-weight: 300;">S</h1></div>
+        </div> -->
+        <div style="width: 100%;">
+            <img src="/static/tech_exh/img/nuist_logo.png" alt="" style="width: 100%;">
+        </div>
+        <!-- <h2 style="font-size: 13px;font-weight: 100;text-align-last: justify;">南京信息工程大学气候预测系统</h2> -->
+        <div style="padding:8px;padding-left:10px;padding-right:10px;border-radius:16px;text-align:center;background-color: rgba(0,0,0,0.8);backdrop-filter:blur(30px);height:32px;">
+            <h2 style="font-size: 16px;line-height: 100%;">2021年8月1日起报未来24个月</h2>
+        </div>
     </div>
-    <div class="map-overlay"  id="overlay-control" style="display: flex;">
-        <div style="display: inline-flex; flex-direction:column;flex:1;">
-            <div style="flex: 1;" id="control_charts">
-                <div class="control-button">
-                    <img src= '{% static "tech_exh/img/icon-charts.svg" %}'alt="">
-                </div>
-            </div>
-            <div style="flex: 1;" id="control_wind">
+    <div class="map-overlay"  id="overlay-control" style="display: block;height:auto;left:calc(50vw - 180px)">
+        <div style="display: inline-flex; flex-direction:row;">
+      <!--       <div style="flex: 1;" id="control_wind">
                 <div class="control-button">
                     <img src='{% static "tech_exh/img/icon-wind.svg" %}' alt="">
                 </div>
-            </div>
+            </div> -->
             <div style="flex: 1;" id="control_play">
                 <div class="control-button">
                     <img src='{% static "tech_exh/img/icon-play.svg" %}' alt="">
+                    <div class="title">滚动播放</div>
+                </div>
+            </div>
+            <div style="flex: 1;" id="control_time">
+                <div class="control-button">
+                    <img src='{% static "tech_exh/img/icon_calendar.svg" %}' alt="">
+                    <div class="title">选择月份</div>
+                </div>
+            </div>
+            <div style="flex: 1;" id="control_mode2">
+                <div class="control-button" style="background-color: rgb(255,255,255);color:black;">
+                    <img src='{% static "tech_exh/img/earth.svg" %}' alt="">
+                    <div class="title">地形图</div>
+                </div>
+            </div>
+
+            <div style="flex: 1;" id="control_charts">
+                <div class="control-button">
+                    <img src= '{% static "tech_exh/img/charts_white.svg" %}'>
+                    <div class="title">显示表格</div>
                 </div>
             </div>
             <div style="flex:1;text-align: center;display:none;">
@@ -123,26 +153,55 @@ body { margin: 0; padding: 0; height: 100vh;overflow: hidden;}
                     <input type="range" min="0" max="23" id="time" style=" -webkit-appearance: slider-vertical;">
                 </div>
             </div>
-
-
             <input type="checkbox"  id="switch1" style="display: none;">
-            <!-- <label class="custom-control-label" for="switch1">季风</label> -->
             <input type="checkbox" id="switch2" value="animation" style="display: none;">
-            <!-- <label class="custom-control-label" for="switch2">动画触发</label> -->
+            <input type="checkbox" id="switch3" value="mode" style="display: none;">
+            <input type="checkbox" id="switch4" value="auto-play" style="display: none;">
         </div>
     </div>
-    <div class="map-overlay" id="overlay-status" style="background-color: white;bottom: calc(25vh + 60px);right:30px;top:auto;left: auto;height: 50px;width: 15vw;border-radius:30px;padding-top:0;padding-bottom:0;padding-left: 20px;display: flex;align-items:center;">
+<!--     <div class="map-overlay" id="overlay-status" style="background-color: white;bottom: calc(25vh + 60px);right:30px;top:auto;left: auto;height: 50px;width: 15vw;border-radius:30px;padding-top:0;padding-bottom:0;padding-left: 20px;display: flex;align-items:center;">
         <div style="flex:1;height: 32px;">
             <div style="display:inline-block;width: 32px;height: 32px;border: 2px solid #FE6060;border-radius: 50%;opacity: 1;padding-top: 6px;padding-left: 6px;"><div style="width: 16px;height: 16px;background: #FF6060;border-radius: 50%;opacity: 1;"></div></div>
         </div>
         <div style="flex:3;display: inline-block;"><h2 style="margin:0;font-size: 15px;line-height: 15px;display: inline-block;" id="status_text"></h2></div>
-        
+    </div> -->
+
+    <div id="colorbar" style="display: flex;width:40px;height: 230px;right:30px;position: absolute;bottom: calc(25vh + 45px);border-radius: 5px;text-align: center;overflow: hidden;font-size: 10px;line-height: 25px;flex-direction: column;font-weight: bold;">
+    </div>
+    <div id="colorbar_number" style="display: flex;width:30px;height: 230px;right:35px;position: absolute;bottom: calc(25vh + 35px);border-radius: 5px;text-align: center;overflow: hidden;font-size: 10px;line-height: 25px;flex-direction: column;font-weight: bold;color:black;">
+    </div>
+    <div class="map-overlay overlay-list" id="overlay-time-select" style="left:calc(160px + 150px + max(25vw , 400px));top:140px;">
+        <ul>
+            <li><button id='time0'>2021-08</button></li>
+            <li><button id='time1' >2021-09</button></li>
+            <li><button id='time2'>2021-10</button></li>
+            <li><button id='time3'>2021-11</button></li>
+            <li><button id='time4'>2021-12</button></li>
+            <li><button id='time5'>2022-01</button></li>
+            <li><button id='time6'>2022-02</button></li>
+            <li><button id='time7'>2022-03</button></li>
+            <li><button id='time8'>2022-04</button></li>
+            <li><button id='time9'>2022-05</button></li>
+            <li><button id='time10'>2022-06</button></li>
+            <li><button id='time11'>2022-07</button></li>
+            <li><button id='time12'>2022-08</button></li>
+            <li><button id='time13'>2022-09</button></li>
+            <li><button id='time14'>2022-10</button></li>
+            <li><button id='time15'>2022-11</button></li>
+            <li><button id='time16'>2022-12</button></li>
+            <li><button id='time17'>2023-01</button></li>
+            <li><button id='time18'>2023-02</button></li>
+            <li><button id='time19'>2023-03</button></li>
+            <li><button id='time20'>2023-04</button></li>
+            <li><button id='time21'>2023-05</button></li>
+            <li><button id='time22'>2023-06</button></li>
+            <li><button id='time23'>2023-07</button></li>
+        </ul>
     </div>
     <div class="map-overlay" id="overlay-tianditu" style="background-color: rgba(255,255,255,0.5);bottom: 0;right:0px;top:auto;left: auto;height: 20px;width: 200px;border-radius:30px;padding:0;display: flex;align-items:center;border-radius:0;color:black;padding-left:30px;">
         审图号：GS(2021)3715号
     </div>
-
-    <div id="page">
+     <div id="page">
         <img src='{% static "tech_exh/img/earth.png" %}' alt="" style="width:100%;">
     </div>
     <div id="home-overlay" class="home-overlay">
@@ -151,8 +210,7 @@ body { margin: 0; padding: 0; height: 100vh;overflow: hidden;}
             <h2>南京信息工程大学气候预测系统</h2>
             <div id="home-btn"><button>START</button></div>
         </div>
-        <!-- <div id="globalArea"></div> -->
-    </div>
+    </div> 
 
 </body>
 </html>
@@ -160,84 +218,98 @@ body { margin: 0; padding: 0; height: 100vh;overflow: hidden;}
 <script src='{% static "tech_exh/js/gen-chart.js" %}'></script>
 <script src='{% static "tech_exh/js/renderwind.js" %}'></script>
 <script>
-$("#home-btn").css('background-color','gray')
-$("#page").css('cursor','wait');
-$("#home-overlay").css('cursor','wait');
-$("#home-btn button").html('LOADING').css('background-color','gray').css('cursor','wait').attr('disabled',true);
-setTimeout(()=>{
-    $("#home-btn").css('background-color','white');
-    $("#page").css('cursor','auto');
-    $("#home-overlay").css('cursor','auto');
-    $("#home-btn button").html('START').css('background-color','white').css('cursor','pointer').attr('disabled',false);
-},6000)
-var chart_data;
-var heatmap_data;
-var rendered_num = 0;
-const map = map_init();
-bindEvents();
-$("#status_text").html('数据加载中');
-function addRasterTileLayer(map, url, sourceId, layerId) {
-    if(sourceId=='cvaw'){
-        map.addSource(sourceId, {
-            type: 'raster',
-            tiles: [url],
-            tileSize: 256,
-            maxzoom:7,
-        });
-        map.addLayer({
-            id: layerId,
-            type: 'raster',
-            source: sourceId
-        });
-    }else{
-        map.addSource(sourceId, {
-            type: 'raster',
-            tiles: [url],
-            tileSize: 256,
-        });
-        map.addLayer({
-            id: layerId,
-            type: 'raster',
-            source: sourceId
-        });
+    $("#time").val(0)
+    map_colors = ['rgba(31,82,216,1)','rgba(33,105,235,1)','rgba(49,127,248,1)','rgba(64,142,239,1)','rgba(116,164,238,1)','rgba(136,198,252,1)','rgba(168,238,251,1)','rgba(216,255,253,1)','rgba(255,224,225,1)','rgba(254,184,192,1)','rgba(243,140,140,1)','rgba(216,122,120,1)','rgba(223,89,96,1)','rgba(222,57,65,1)','rgba(179,41,49,1)'];
+    levels = ['',-2.5, -2, -1.5, -1.2, -0.9, -
+    0.6, -0.3, 0, 0.3, 0.6, 0.9, 1.2, 1.5, 2.0]
+    for (var i = map_colors.length - 1; i >= 0; i--) {
+        let newdiv = $("<div></div>").css('flex','1').css('background-color',map_colors[i])
+        $("#colorbar").append(newdiv)
     }
-}
-map.on('load',()=>{
+    for (var i = levels.length - 1; i >= 0; i--) {
+        let newdiv = $("<div></div>").css('flex','1').css('line-height','12px').css('font-size','12px').html(levels[i])
+        $("#colorbar_number").append(newdiv)
+    }
+    $("#home-btn").css('background-color','gray');
+    $("#page").css('cursor','wait');
+    $("#home-overlay").css('cursor','wait');
+    $("#home-btn button").html('LOADING').css('background-color','gray').css('cursor','wait').attr('disabled',true);
+    setTimeout(()=>{
+        $("#home-btn").css('background-color','white');
+        $("#page").css('cursor','auto');
+        $("#home-overlay").css('cursor','auto');
+        $("#home-btn button").html('START').css('background-color','white').css('cursor','pointer').attr('disabled',false);
+    },6000);
+    var chart_data;
+    var heatmap_data;
+    var rendered_num = 0;
+    const map = map_init();
+    bindEvents();
+    // $("#status_text").html('数据加载中');
+    function addRasterTileLayer(map, url, sourceId, layerId) {
+        if(sourceId=='cvaw'){
+            map.addSource(sourceId, {
+                type: 'raster',
+                tiles: [url],
+                tileSize: 256,
+            });
+            map.addLayer({
+                id: layerId,
+                type: 'raster',
+                source: sourceId,
+            });
+        }else{
+            map.addSource(sourceId, {
+                type: 'raster',
+                tiles: [url],
+                tileSize: 256,
+            });
+            map.addLayer({
+                id: layerId,
+                type: 'raster',
+                source: sourceId,
+            });
+        }
+    }
+    map.on('load',()=>{
         // setTimeout(()=>{
         //     $("#switch1").click();
         // },1000);
         // setTimeout(()=>{
         //     $("#switch1").click();
         // },2000);
-        for(var i = 0;i<24;i++){
-            nc_data_url = 'http://localhost:8000/static/tech_exh/data/ncdata'+i+'.geojson';
-            render_heatmap(nc_data_url);
-            rendered_num++;
+        // for(var i = 0;i<24;i++){
+        //     for(var level = 0 ;level<15;level++){
+        //         nc_data_url = 'http://localhost:8000/static/tech_exh/data/temp_time'+i+'_level'+level+'.geojson';
+        //         render_heatmap(nc_data_url);
+        //     }
+        //     rendered_num++;
+        // };
+        for(var i=0;i<24;i++){
+            // render_countour('http://localhost:8000/static/tech_exh/data/contour/contour'+i+'.geojson')
+            // render_contour_byImage('/static/tech_exh/data/contour/pic/'+i+'.png');
+            render_countour('/static/tech_exh/data/contour/contour_line/contour'+i+'.geojson')
         };
+        render_continents();
 
 // $("#status_text").html('地图渲染完成');
 // $("#control_charts").css('pointer-events','none');
 // $("#control_wind").css('pointer-events','none');
 // $("#control_play").css('pointer-events','none');
 });
-$.ajax({
-    url:'http://78.141.244.84:8000/tech/getdata?district=all_region',
-    crossDomain: true,
-    type:'GET',
-    data:null,
-    processData:false,
-    contentType:false,
-    success:function(ret){
-        console.log('success')
-        if(ret!=null){
-            console.log(ret)
-            chart_data = ret;
-        }
-        $("#status_text").html('数据加载完成');
-
-    }
-});
+    // $.ajax({
+    //     url:'http://78.141.244.84:8000/tech/getdata?district=all_region',
+    //     crossDomain: true,
+    //     type:'GET',
+    //     data:null,
+    //     processData:false,
+    //     contentType:false,
+    //     success:function(ret){
+    //         console.log('success')
+    //         if(ret!=null){
+    //             chart_data = ret;
+    //         }
+    //     }
+    // });
 
 </script>
-
-

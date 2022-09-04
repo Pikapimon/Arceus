@@ -8,6 +8,9 @@ from .myutils.pkEmail import *
 from Arceus.settings import BASE_DIR
 import os
 import random
+from django.views.decorators.csrf import csrf_exempt
+import json
+
 # Create your views here.
 
 
@@ -26,6 +29,11 @@ def leave_main(request):
             info['class_name'] = dodger.class_name
             info['id_number'] = dodger.id_number
             info['phone_number'] = dodger.phone_number
+            info['instructor_name'] = dodger.instructor_name
+            info['secretary_name'] = dodger.secretary_name
+            info['gender'] = dodger.gender
+            info['major'] = dodger.major
+            info['now_date'] = dodger.latest_using_date.strftime('%Y-%m-%d')
             return render(request, 'Dodge/leave.html', info)
         elif len(temp) == 0:  # not exist
 
@@ -65,9 +73,45 @@ def leave_main(request):
                 info['class_name'] = dodger.class_name
                 info['id_number'] = dodger.id_number
                 info['phone_number'] = dodger.phone_number
+                info['instructor_name'] = dodger.instructor_name
+                info['secretary_name'] = dodger.secretary_name
+                info['gender'] = dodger.gender
+                info['major'] = dodger.major
+                info['now_date'] = dodger.latest_using_date.strftime(
+                    '%Y-%m-%d')
                 return render(request, 'Dodge/leave.html', info)
             else:
                 return HttpResponse('邀请码错误')
     except Exception as e:
         print(e)
         return HttpResponse(' Wrong Parameters Killing！')
+
+
+def register(request):
+    return render(request, 'Dodge/register.html')
+
+
+@csrf_exempt
+def register_commit(request):
+    received_json_data = json.loads(request.body)
+    temp = Dodger.objects.filter(id_number=received_json_data['id_num'])
+    if len(temp) == 1:
+        temp = temp[0]
+        temp.id_number = received_json_data['id_num'] if received_json_data['id_num'] != '' else temp.id_number
+        temp.name = received_json_data['name'] if received_json_data['name'] != '' else temp.name
+        temp.phone_number = received_json_data['phone_num'] if received_json_data[
+            'phone_num'] != '' else temp.phone_number
+        temp.stu_id = received_json_data['stu_num'] if received_json_data['stu_num'] != '' else temp.stu_id
+        temp.college_name = received_json_data['college'] if received_json_data['college'] != '' else temp.college_name
+        temp.gender = received_json_data['gender'] if received_json_data['gender'] != '' else temp.gender
+        temp.major = received_json_data['major'] if received_json_data['major'] != '' else temp.major
+        temp.class_name = received_json_data['class'] if received_json_data['class'] != '' else temp.class_name
+        temp.instructor_name = received_json_data['instructor_name'] if received_json_data[
+            'instructor_name'] != '' else temp.instructor_name
+        temp.secretary_name = received_json_data['secretary_name'] if received_json_data[
+            'secretary_name'] != '' else temp.secretary_name
+        temp.mail_addr = received_json_data['email'] if received_json_data['email'] != '' else temp.mail_addr
+        temp.update()
+        return HttpResponse('修改成功')
+    else:
+        return HttpResponse('该证件号无用户')

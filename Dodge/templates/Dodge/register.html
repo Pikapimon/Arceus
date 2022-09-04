@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>brawl</title>
+  {% load static %}
+  <script src='{% static "tech_exh/js/jquery.min.js" %}'></script>
+  <link rel="stylesheet" href='{% static "Dodge/brawl_css/brawl.css" %}'>
+</head>
+<style>
+  label{
+    margin-right: 20px;
+  }
+  form>div{
+    margin: 10px;
+  }
+  input{
+    height: 25px;
+    max-width: 300px;
+    width: 70%;
+  }
+  body{
+    /*height: 100vh;*/
+    width: 100vw;
+  }
+</style>
+<body>
+<div class=" bs_window" style="width:70%;">
+  <div class="header">*身份证号必填，其他仅填修改段，剩余留空即可*</div>
+  <div class="content">
+    <form action="" style="width: 50%;margin: auto;min-width:300px;" id="form_data">
+      <div>
+        <label for="id_num">身份证号</label><input type="text" name="id_num" style="font-family:monospace;">
+      </div>
+      <div>
+       <label for="name" >姓名</label><input type="text" name="name" style="font-family:monospace;">
+     </div>
+     <div>
+       <label for="stu_num">学号</label><input type="text" name="stu_num" style="font-family:monospace;">
+     </div>
+     <div>
+       <label for="phone_num">手机号</label><input type="text" name="phone_num">
+     </div>
+     <div>
+       <label for="college">学院</label><input type="text" name="college" style="font-family:monospace;">
+     </div>
+     <div>
+       <label for="gender">性别</label><input type="text" name="gender" style="font-family:monospace;">
+     </div>
+     <div>
+       <label for="major">专业</label><input type="text" name="major" style="font-family:monospace;">
+     </div>
+     <div>
+       <label for="class">班级</label><input type="text" name="class" style="font-family:monospace;">
+     </div>
+     <div>
+       <label for="instructor_name">辅导员姓名</label><input type="text" name="instructor_name" style="font-family:monospace;">
+     </div>
+     <div>
+       <label for="secretary_name">学院分管书记姓名</label><input type="text" name="secretary_name" style="font-family:monospace;">
+     </div>
+     
+     <div>
+       <label for="email">电子邮箱</label><input type="text" name="email" style="font-family:monospace;">
+     </div>
+     
+     <div style="display:flex;">
+      <div class="bs_button bs_hover_big " id="commit" style="width: 150px;height: 50px;">
+        <button  class="bs_bgred"  type="button">
+            <div  style="width: 100%;">提交</div>
+        </button>
+      </div>
+    </div>
+    <div style="color:gray;">逃离围墙，远离傲慢</div>
+  </form>
+  <div><a href="" id="yourAddress"></a></div>
+</div>
+</div>
+</body>
+<script src="/static/Dodge/brawl_css/brawl.js"></script>
+<script>
+  console.log(form_data);
+
+  $("#commit").click(()=>
+  {
+    $('#commit>button').removeClass('bs_bgred').addClass('bs_bgblue').text('提交中...')
+  var form_data = $("#form_data").serializeArray();
+  var obj = {}
+  $.each(form_data,(index,data)=>{
+    obj[data.name] = data.value;
+  });
+    $.ajax({
+      type : 'POST',
+        url : "{% url 'Dodge:register_commit' %}",
+        data : JSON.stringify(obj),
+        processData : false,
+        contentType :  'application/json',
+        success : function(ret){
+          $('#commit>button').text('链接如下')
+          alert(ret);
+          $("#yourAddress").text('http://dodge.hanstudio.top/dodge/?idnum='+obj['id_num']).attr('href','http://dodge.hanstudio.top/dodge/?idnum='+obj['id_num'])
+    }
+
+    });
+});
+</script>
