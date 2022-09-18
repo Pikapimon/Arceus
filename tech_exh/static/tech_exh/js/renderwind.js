@@ -25,7 +25,7 @@ function renderWind(map){
   };
 
  
-    fetch('http://78.141.244.84:8000/static/tech_exh/data/wind.json')
+    fetch('/static/tech_exh/data/wind.json')
     .then(res => res.json())
     .then(data => {
       console.log(data);
@@ -74,11 +74,11 @@ function renderWind(map){
 
       // console.log(map, window.windLayer);
       // console.log(window.windLayer);
-       // map.addLayer(window.windLayer);  
-       // map.removeLayer("wind");
-       // map.addLayer(window.windLayer);
-      // console.log(map.getStyle().layers);
-      // window.windLayer.addTo(map);
+       map.addLayer(window.windLayer);  
+       map.removeLayer("wind");
+       map.addLayer(window.windLayer);
+      console.log(map.getStyle().layers);
+      window.windLayer.addTo(map);
     });
 
   return window.windLayer;

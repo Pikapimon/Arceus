@@ -122,88 +122,6 @@ function show_region_selecter(){
 
 }
 function select_region(){
-    // view_options = {
-    //     'global':{
-    //         center: [70, 0],
-    //         pitch: 0, // 50
-    //         bearing: 0, // bearing in degrees
-    //         zoom: 1,
-    //         speed: 0.3,
-    //         curve:1
-    //     },
-    //     'china':{
-    //       center:[90,28],
-    //         pitch: 0, // 50
-    //         bearing:0, // bearing in degrees
-    //         zoom: 3.5,
-    //         speed: 0.3,
-    //         curve:1,
-    //         essential: true
-    //     },
-    //     'huadong':{
-    //         center:[120,30],
-    //         pitch: 0, // 50
-    //         bearing: 0, // bearing in degrees
-    //         zoom: 6.5,
-    //         speed: 0.3,
-    //         curve:1,
-    //         essential:true
-    //     },
-    //     'huanan':{
-    //         center:[109,21],
-    //         pitch: 0, // 50
-    //         bearing: 35, // bearing in degrees
-    //         zoom: 6.5,
-    //         speed: 0.3,
-    //         curve:1,
-    //         essential: true
-    //     },
-    //     'huazhong':{
-    //         center:[111,27],
-    //         pitch: 0, // 50
-    //         bearing:25, // bearing in degrees
-    //         zoom: 6.5,
-    //         speed: 0.3,
-    //         curve:1,
-    //         essential: true
-    //     },
-    //     'huabei':{
-    //         center:[110,34],
-    //         pitch: 0, // 50
-    //         bearing: 0, // bearing in degrees
-    //         zoom: 6.5,
-    //         speed: 0.3,
-    //         curve:1,
-    //         essential: true
-    //     },
-    //     'xibei':{
-    //         center:[98,35],
-    //         pitch: 0, // 50
-    //         bearing: 20, // bearing in degrees
-    //         zoom: 6.5,
-    //         speed: 0.3,
-    //         curve:1,
-    //         essential: true
-    //     },
-    //     'xinan':{
-    //         center:[103,24],
-    //         pitch: 0, // 50
-    //         bearing: 15, // bearing in degrees
-    //         zoom: 6.5,
-    //         speed: 0.3,
-    //         curve:1,
-    //         essential: true
-    //     },
-    //     'dongbei':{
-    //         center:[122,43],
-    //         pitch: 0, // 50
-    //         bearing: 15, // bearing in degrees
-    //         zoom: 6.5,
-    //         speed: 0.3,
-    //         curve:1,
-    //         essential: true
-    //     },
-    // };
     view_options = {
         'global':{
             center: [70, 0],
@@ -305,36 +223,22 @@ function map_init(){
     mapboxgl.accessToken = 'pk.eyJ1IjoicGlrYW1vbjExMSIsImEiOiJja3NhZXdxdGkwcTJmMnVxcDYxeHdpNHAzIn0.y9FYPXxUqaLhNRjghWjKkA';
     const map = new mapboxgl.Map({
         container: 'map',
-        style: {//为map构造一个空的style
-            "version": 8,
-            "sources": {},
-            "layers": [],
-
-        },
+        style:'mapbox://styles/mapbox/satellite-streets-v11',
         center: [120, 0],
-        zoom: 2.5,
-        maxZoom:5,
-        minZoom: 2.5,
+        zoom: 3,
+        projection: 'globe'
     });
-    const tiandituToken = 'd12deb9576426df9aff82075b754790a';
-    const vecwUrl = 'https://t3.tianditu.gov.cn/img_w/wmts?' +
-    'SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&' +
-    'TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=' + tiandituToken;
-    // https://t3.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=
-    //矢量注记
-    const cvawUrl = 'https://t3.tianditu.gov.cn/cva_w/wmts?' +
-    'SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&' +
-    'TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=' + tiandituToken;
     map.on('load',()=>{
-        addRasterTileLayer(map,vecwUrl,'imgw','imgw');
-        map.addSource('mapbox-dem', {
-            'type': 'raster-dem',
-            'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
-            'tileSize': 512,
-            'maxzoom': 2,
-        });
-        map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 7 });
-        addRasterTileLayer(map,cvawUrl,'cvaw','cvaw');
+        // map.addSource('mapbox-dem', {
+        //     'type': 'raster-dem',
+        //     'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+        //     'tileSize': 512,
+        //     'maxzoom': 2,
+        // });
+        //map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 7 });
+        map.setFog({});
+        window.windlayer = renderWind(map);
+        map.addLayer(window.windlayer);
     });
     return map;
 }
@@ -466,9 +370,6 @@ function render_countour(data_url){
     // });
 }
 function render_heatmap(data_url){
-  //   if (map.getLayer("earthquakes-heat")) {
-  //     map.removeLayer("earthquakes-heat");
-  // }
   heatmap_colors = ['rgba(31,82,216,1)','rgba(33,105,235,1)','rgba(49,127,248,1)','rgba(64,142,239,1)','rgba(116,164,238,1)','rgba(136,198,252,1)','rgba(168,238,251,1)','rgba(216,255,253,1)','rgba(255,224,225,1)','rgba(254,184,192,1)','rgba(243,140,140,1)','rgba(216,122,120,1)','rgba(223,89,96,1)','rgba(222,57,65,1)','rgba(179,41,49,1)'];
   heatmap_color = heatmap_colors[data_url.slice(data_url.indexOf('level')+5,data_url.indexOf('.geojson'))];
   data_name = data_url.slice(data_url.indexOf('temp'),data_url.indexOf('.geojson'))
@@ -524,17 +425,7 @@ function show_(time_num){
     map.setLayoutProperty('contourf_'+time_num,'visibility','visible');
     map.setLayoutProperty('contour_'+time_num,'visibility','visible');
     console.log('打开'+time_num);
-        // to_close = shown_heatmap_name
         shown_heatmap_name = time_num;
-        // map.on('render',()=>{
-        //     if (to_close!= null){
-        //         map.setLayoutProperty('contour_'+time_num,'visibility','none');
-        //         map.setLayoutProperty('contourf_'+time_num,'visibility','none');
-        //         console.log('关闭'+to_close)
-        //         to_close = null;
-        //     }
-        //    
-        // });
     };
     var enlarged_chart_number = null;
     var heatmap_isShown = false;
@@ -563,7 +454,7 @@ function show_(time_num){
         }
         else
         {
-            // console.log(cked);
+            console.log(cked);
             window.windlayer.remove();
             map.removeLayer('wind');
         }
@@ -610,34 +501,34 @@ function show_(time_num){
             $("#control_wind .control-button").css('background-color','rgba(0,0,0,0.3)');
         }
     });
-    $("#control_play").click(()=>{
-        $("#switch4").click();
-        if($("#switch4").prop('checked')){
-            $("#control_play .control-button")
-            .css('background-color','rgba(255,255,255,1)')
-            .css('color','black');
-            $("#control_play img").attr('src','/static/tech_exh/img/zanting.svg');
-            $("#control_play .title").html('暂停滚动')
+    // $("#control_play").click(()=>{
+    //     $("#switch4").click();
+    //     if($("#switch4").prop('checked')){F
+    //         $("#control_play .control-button")
+    //         .css('background-color','rgba(255,255,255,1)')
+    //         .css('color','black');
+    //         $("#control_play img").attr('src','/static/tech_exh/img/zanting.svg');
+    //         $("#control_play .title").html('暂停滚动')
 
-            interval_id = setInterval(function(){
-                // console.log('#time'+($("#time").val()))
-                play_next();
-                for(var j = 0;j<24;j++){
-                    $('#time'+j).css('color','gray')
-                }
-                $('#time'+($("#time").val())).css('color','black');
-            },2000);
-        }else{
-            $("#control_play .control-button")
-            .css('background-color','rgba(0,0,0,0.3)')
-            .css('color','white');
-            $("#control_play img").attr('src','/static/tech_exh/img/icon-play.svg');
-            $("#control_play .title").html('滚动播放');
+    //         interval_id = setInterval(function(){
+    //             // console.log('#time'+($("#time").val()))
+    //             play_next();
+    //             for(var j = 0;j<24;j++){
+    //                 $('#time'+j).css('color','gray')
+    //             }
+    //             $('#time'+($("#time").val())).css('color','black');
+    //         },2000);
+    //     }else{
+    //         $("#control_play .control-button")
+    //         .css('background-color','rgba(0,0,0,0.3)')
+    //         .css('color','white');
+    //         $("#control_play img").attr('src','/static/tech_exh/img/icon-play.svg');
+    //         $("#control_play .title").html('滚动播放');
 
-            clearInterval(interval_id);
-        }
+    //         clearInterval(interval_id);
+    //     }
 
-    });
+    // });
     $("#control_mode2").click(()=>{
         $("#switch3").click();
         if($("#switch3").prop('checked')){

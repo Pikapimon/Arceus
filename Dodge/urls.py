@@ -6,6 +6,7 @@ app_name = 'Dodge'
 urlpatterns = [
     url('register_commit', views.register_commit, name="register_commit"),
     url('register', views.register),
-    url('', views.leave_main),
+    url('leave', views.leave_main),
+    url('enter', views.enter_main),
 
 ]

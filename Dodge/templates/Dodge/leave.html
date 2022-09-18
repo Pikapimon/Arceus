@@ -71,7 +71,7 @@
 			</div>
 			<div class="ilb" style="width:65%;height: 50px;font-size: 40px;color: white;font-weight: bold;">
 				<span>学生请假申请:申请人(已完成)</span>
-			</div>µ
+			</div>
 			<div class="ilb" style="width: 20%;padding-right: 0;margin-right:0;font-size: 26px;color: white;">
 				<p>流水号: 1347038</p>
 			</div>
@@ -110,8 +110,8 @@
 						<div style="height: 50%;width: 100%;background-color: white;display: block;transform: skew(25deg);"></div>
 						<div style="height: 50%;width: 100%;background-color: white;display: block;transform: skew(-25deg);"></div>
 					</div>
-					<div style="display: inline-flex;align-items: center;height: 100%;padding-left: 20px;padding-right: 20px;">
-						<p style="line-height: 100%;margin:0;">学院分管学生工作副书记审核</p>
+					<div style="display: inline-flex;align-items: center;height: 100%;padding-left: 20px;padding-right: 20px;background-color: #2470a0;">
+						<p style="line-height: 100%;margin:0;">申请人销假</p>
 					</div>
 					<div style="display: inline-flex;width: 10px;height: 100%;vertical-align: top;flex-direction: column;">
 						<div style="height: 50%;width: 100%;background-color: white;display: block;transform: skew(25deg);"></div>
@@ -160,8 +160,8 @@
 							<td class="red">离校具体时间</td>
 							<td style="padding:0px;height:104px;">
 
-								<table class="none" style="width:100%;height:178px;`">
-									<tr><td style="width:50%;font-size:32px;">{{now_date}}</td><td style="width:50%;fontsize:40px;">8:00</td></tr>
+								<table class="none" style="width:100%;height:178px;">
+									<tr><td style="width:50%;font-size:32px;">{{now_date}}</td><td style="width:50%;font-size:40px;">8:00</td></tr>
 								</table>
 							</td>
 						</tr>
@@ -169,8 +169,8 @@
 							<td class="red">返校具体时间</td>
 							<td style="padding:0px;height:104px;">
 
-								<table class="none" style="width:100%;height:178px;`">
-									<tr><td style="width:50%;font-size:32px;">{{now_date}}</td><td style="width:50%;fontsize:40px;">23:00</td></tr>
+								<table class="none" style="width:100%;height:178px;">
+									<tr><td style="width:50%;font-size:32px;">{{now_date}}</td><td style="width:50%;font-size:40px;">23:00</td></tr>
 								</table>
 							</td>
 						</tr>
@@ -219,9 +219,12 @@
 			<tr><td><div style="height: 200px;"></div></td></tr>
 			<tr><td>审批人</td><td>{{secretary_name}}</td></tr>
 			<tr><td>审批时间</td><td>{{now_date}}</td></tr>
-			<tr><td>苏康码</td><td><img src="{% static 'Dodge/qrCodeImg.png' %}" alt="" style="height: 30px;"></td></tr>
-			<tr><td>行程码</td><td></td></tr>
-			<tr><td>24小时内核酸检测</td><td></td></tr>
+			<tr><td>苏康码</td><td><div style="width: 70%;margin-left: 15%;border:2px dashed gray"><img src="{% static 'Dodge/qrCodeImg.png' %}" style="width:100%" ></div ></td></tr>
+			<tr><td>行程码</td><td><div style="width: 70%;margin-left: 15%;border:2px dashed gray"><img src="{% static 'Dodge/qrCodeImg.png' %}" style="width:100%" ></div ></td></tr>
+			<tr><td>24小时内核酸检测1</td><td><div style="width: 70%;margin-left: 15%;border:2px dashed gray"><img src="{% static 'Dodge/qrCodeImg.png' %}" style="width:100%" ></div ></td></tr>
+			<tr><td>销假人</td><td>{{name}}</td></tr>
+			<tr><td>销假时间</td><td><div style="border:1px solid #0560a6;border-radius: 10px;height: 90%;background-color: white;"><div style="width: 10%;margin-left: 90%;"><img src="{% static 'Dodge/calen.png' %}" style="width:80%"></div></div></td></tr>
+			<tr><td colspan="2" style="color:rgb(218, 0, 0)">提示：请在销假时问当天进校，超过销假时间则无法进校。</td></tr>
 
 		</table>
 
@@ -234,19 +237,19 @@
 		</div>
 	</div>
 	<div style="width:95%;font-size:40px;color:#0560A6;box-shadow:5px 5px 5px #cccccc;padding-top:30px;padding-bottom:30px;padding-left:40px;padding-right: 40px;margin: auto;margin-top: 50px;">
+		
 		<div style="padding-bottom: 20px;">
-			<img src="{% static 'Dodge/ico_user.png' %} " alt="" style="width:32px;marigin-right:10px;"> 
-			<span style="font-weight: bold;">您({{secretary_name}})</span>
-			<span>填写/办理了</span>
-			<span style="font-weight: bold;">学院分管学生工作副书记审核意见(</span>
-			<span style="color:green;">提交</span>
-			<span style="font-weight: bold;">)</span>
+			<img src="{% static 'Dodge/ico_user.png' %} " alt="" style="width:32px;margin-right:10px;"> 
+			<span style="font-weight: bold; color: rgb(255, 196, 0);">您({{name}})</span>
+			<span>正在填写/办理</span>
+			<span style="font-weight: bold;">申请人销假</span>
 		</div>
-		<div style="width:50%;margin:auto;" id="history_line"><span style="display:inline-block;transform: rotate(90deg);">&raquo;</span><span style="font-size: 80%;">&nbsp;点击展开两个较早历史</span></div>	
+		<div style="width:50%;margin:auto;" id="history_line"><div style="text-align: center;"><span style="display:inline-block;transform: rotate(90deg);">&raquo;</span><span style="font-size: 80%;">&nbsp;点击展开2个较早历史</span></div></div>	
 		<span style="display: none;" id="history_block">
 			<div style="height: 0;border-top: 2px solid gray"></div>
 			<div style="padding-bottom: 20px;">
-				<img src="{% static 'Dodge/ico_user.png' %} " alt="" style="width:32px;marigin-right:10px;"> 
+				<img src="{% static 'Dodge/ico_user.png' %} " alt="" style="width:32px;margin-right:10px;"> 
+
 				<span style="font-weight: bold;">您({{instructor_name}})</span>
 				<span>填写/办理了</span>
 				<span style="font-weight: bold;">辅导员审核意见(</span>
@@ -255,10 +258,10 @@
 			</div>
 			<div style="height: 0;border-top: 2px solid gray"></div>
 			<div style="padding-bottom: 20px;">
-				<img src="{% static 'Dodge/ico_user.png' %} " alt="" style="width:32px;marigin-right:10px;"> 
-				<span style="font-weight: bold;">您({{name}})</span>
+				<img src="{% static 'Dodge/ico_user.png' %} " alt="" style="width:32px;margin-right:10px;"> 
+				<span style="font-weight: bold;">您({{secretary_name}})</span>
 				<span>填写/办理了</span>
-				<span style="font-weight: bold;">申请人(</span>
+				<span style="font-weight: bold;">学院分管学生工作副书1记审核意见(</span>
 				<span style="color:green;">提交</span>
 				<span style="font-weight: bold;">)</span>
 			</div>

@@ -86,6 +86,30 @@ def leave_main(request):
         print(e)
         return HttpResponse(' Wrong Parameters Killing！')
 
+def enter_main(request):
+    try:
+        temp = Dodger.objects.filter(id_number=request.GET['idnum'])
+        if len(temp) == 1:  # existed
+            dodger = temp[0]
+            dodger.latest_using_date = timezone.now()
+            dodger.save()
+            info = {}
+            info['name'] = dodger.name
+            info['stu_id'] = dodger.stu_id
+            info['college'] = dodger.college_name
+            info['class_name'] = dodger.class_name
+            info['id_number'] = dodger.id_number
+            info['phone_number'] = dodger.phone_number
+            info['instructor_name'] = dodger.instructor_name
+            info['secretary_name'] = dodger.secretary_name
+            info['gender'] = dodger.gender
+            info['major'] = dodger.major
+            info['now_date'] = dodger.latest_using_date.strftime('%Y-%m-%d')
+            return render(request, 'Dodge/enter.html', info)
+    except Exception as e:
+        print(e)
+        return HttpResponse(' Wrong Parameters Killing！')
+    
 
 def register(request):
     return render(request, 'Dodge/register.html')
