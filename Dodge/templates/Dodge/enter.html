@@ -64,6 +64,7 @@
 
 	</style>
 	<body style="background-color:rgb(239,239,239)">
+		<div style="z-index: 1;position: fixed;width: 100%;">
 		<div style="width:100%;height:120px;background-color: #2470a0;padding-top: 20px;">
 			<div class="ilb" style="width: 10%;height: 50px;padding-top:0px;">
 				{% load  static%}
@@ -92,20 +93,26 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
 			{# 正文 #}
 		<div style="width: 100%;height:auto;box-shadow: 0px 5px 5px #cccccc;padding-top: 100px;padding-bottom:100px;margin:auto;">
+			<div style="margin-top: 200px;">
+				<img src="{% static 'Dodge/nuist.png' %}"  style="height: 300px;" alt="">
+			</div>
 			<div style="border: 1px solid rgb(170, 170, 170);width: 96%;margin-left: 2%;padding: 20px;">
 				<div style="border:5px inset rgb(196, 193, 193);text-align: center;">
 					<span style="font-size:50px;font-weight: 200;">销假请假二维码</span>
 					<div style="height: 80px;"></div>
-					<span style="font-size: 30px;">{{name}} {{stu_id}}</span>
-					<div style="height: 20px;"></div>
-					<div><span style="font-size: 30px;">人工智能学院</span></div>
+					<span style="font-size: 50px;">{{name}} {{stu_id}}</span>
+					<div style="height: 30px;"></div>
+					<div><span style="font-size: 50px;">{{college}}</span></div>
 					<div></div>
-					<span id="datetime" style="font-size: 45px;font-weight: bold;">1</span>
-					<div style="font-size: 20px;color:red;"><span>有效时间：<span id="today1"></span>至<span id="today2"></span></span></div>
-					<div style="font-size: 20px;">审核状态：审核通过</div>
+					<span id="datetime" style="font-size: 45px;font-weight: bold;"></span>
+					<div style="width:90%;margin-left: 5%;border:10px solid rgb(106,175,118)"><img src="{% static 'Dodge/qrcode321281199907285178.png' %}" style="width: 100%;" alt=""></div>
+					<div style="font-size: 50px;color:red;"><span>有效时间：<span id="today1"></span>至<span id="today2"></span></span></div>
+					<div style="font-size: 50px;font-weight: bold;">审核状态：审核通过</div>
+					<div style="width: 40%;margin-left: 30%;font-size: 50px;color:gray;background-color: rgb(106,175,118);padding-top: 10px;padding-bottom: 10px;font-style: italic;margin-top: 20px;">已进校</div>
 				</div>
 			</div>
 		</div>
@@ -148,15 +155,15 @@ var mydate = new Date();
 	// var time_ = ' '+Math.ceil(Math.random()*10+8)+":"+Math.ceil(Math.random()*10+20)
 	
 	// mydate = new Date();
-	mydate2 = mydate.Format("yyyy-MM-dd");
+	mydate2 = mydate.Format("MM-dd");
 	setInterval(function(){
-		current_date = new Date().Format("yyyy-MM-dd hh:mm:ss")
+		current_date = new Date().Format("MM-dd hh:mm:ss")
 		var timebtm = current_date.toString();
 		timebtm = timebtm.slice(0,4)+'年'+timebtm.slice(5,7)+'月'+timebtm.slice(8,10)+'日 '+timebtm.slice(11,timebtm.length);
-		$("#datetime").text(mydate1)
+		$("#datetime").text(current_date)
 	},100);
-	$("#today2").text(mydate2);
-	$("#today1").text(mydate2);
+	$("#today1").text(mydate2+" 07:00 ");
+	$("#today2").text(" "+mydate2+" 23:30 ");
 
 
 
