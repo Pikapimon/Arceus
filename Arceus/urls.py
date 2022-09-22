@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.foresee),
     url(r'^dodge/', include('Dodge.urls')),
-    url(r'^tech_exh/',include('tech_exh.urls'))
+    url(r'^tech_exh/',include('tech_exh.urls')),
+    url(r'^halfave',include('halfave.urls'))
 ]

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="us-en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no" />
+	<title>Half Ave</title>
+	<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	{% comment %} <script src="http://localhost:8097"></script> {% endcomment %}
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'halfave/css/main.css' %}" type="text/css"></link>
+</head>
+
+<body>
+	<div id="component-goes-here">1</div>
+	
+	<script type="text/babel" src="{% static 'halfave/main.js' %}">
+		
+	  </script>
+</body>
