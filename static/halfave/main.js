@@ -138,7 +138,7 @@ function CoverHeader() {
 			<h1>
 				HALF
 			</h1>
-			<img src="http://localhost:8000/static/halfave/img/Ave_metallic.png" className="center-block"></img>
+			<img src="/static/halfave/img/Ave_metallic.png" className="center-block"></img>
 			<div>
 				<div className="bottomText text-start">1234 Half St</div>
 				<div className="bottomText text-start">XYZ</div>
@@ -295,7 +295,7 @@ function PicWithBracketBelow({imgUrl, leftText, rightText}) {
 	)
 }
 ReactDOM.createRoot( document.getElementById('sec2Pic'))
-	.render(<PicWithBracketBelow imgUrl={"http://localhost:8000/static/halfave/img/sec2pic.jpg"} leftText="THE ENTRANCE" rightText={"X11,Y28,Z90"} />);
+	.render(<PicWithBracketBelow imgUrl={"/static/halfave/img/sec2pic.jpg"} leftText="THE ENTRANCE" rightText={"X11,Y28,Z90"} />);
 ReactDOM.createRoot( document.getElementById('sec3Dots'))
 	.render(<DotsArray direction={0} dotsNum={2} color={"#fc70ff"} size={"5px"} />);
 ReactDOM.createRoot( document.getElementById('sec3Para'))
@@ -307,4 +307,4 @@ ReactDOM.createRoot( document.getElementById('sec4Dots'))
 ReactDOM.createRoot( document.getElementById('sec4Para'))
 	.render(<Paragraph text={"Users will connect, share ideas, and play games to enhance their wellness, always inspired by cutting-edge fashion and design. All intersections between sport and life can be found."}/>);
 ReactDOM.createRoot( document.getElementById('sec4Pic'))
-	.render(<PicWithBracketBelow imgUrl={"http://localhost:8000/static/halfave/img/basketballarcade.jpg"} leftText="THE ENTRANCE" rightText={"X11,Y28,Z90"} />);
+	.render(<PicWithBracketBelow imgUrl={"/static/halfave/img/basketballarcade.jpg"} leftText="THE ENTRANCE" rightText={"X11,Y28,Z90"} />);
