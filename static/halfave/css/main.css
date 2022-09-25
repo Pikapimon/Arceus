@@ -213,6 +213,8 @@ div#cover>#coverCenter {
 }
 #section1>div {
 	height: 80vh;
+	position: relative;
+	top: 75px;
 }
 #section1Main {
 	background-color: rgb(18, 30, 32);	
@@ -284,8 +286,9 @@ div#cover>#coverCenter {
 #Sec1Center>div:nth-child(2)>div {
 }
 
-#section2 {
-/* height: 100vh; */
+#section2>div:nth-child(1) {
+	position: relative;
+	top: 75px;
 }
 #section2>div {
 	padding-left:5% ;

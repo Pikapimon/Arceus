@@ -96,9 +96,9 @@ function NavMenuItem({text,navUrl}) {
 	)
 }
 const menuItemArr = [
-	{id:"about", text:"ABOUT", navUrl:"www.bilibili.com"},
-	{id:"misson", text:"MISSON", navUrl:"www.bilibili.com"},
-	{id:"socialMedia", text:"SOCIAL MEDIA", navUrl:"www.bilibili.com"}
+	{id:"about", text:"ABOUT", navUrl:"#section1"},
+	{id:"misson", text:"MISSON", navUrl:"#section2"},
+	{id:"socialMedia", text:"SOCIAL MEDIA", navUrl:"#section6"}
 ];
 ReactDOM.createRoot( document.getElementById('nav'))
 	.render(<Nav menuItemArray={menuItemArr} iconWithUrlArray={imageUrlArr} />);
