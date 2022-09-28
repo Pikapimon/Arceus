@@ -10,6 +10,14 @@ span{
 *{
 	font-family: 'Termina';
 }
+.DisappearAnimation {
+	animation-name: disappear;
+	animation-duration: 2s;
+}
+.AppearAnimation {
+	animation-name: appear;
+	animation-duration: 2s;
+}
 
 .avatar{
 	border-radius:  50%;
@@ -49,8 +57,8 @@ div#navBaseLine {
 }
 
 .IconButtonImg {
-	width: 70%;
-	height: 70%;
+	width: 90%;
+	height: 90%;
 }
 
 .NavMenu {

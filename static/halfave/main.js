@@ -40,9 +40,9 @@ return (
 
 //MyCode
 const imageUrlArr = [
-						{id: 1, imageUrl: "https://i.imgur.com/yXOvdOSs.jpg", hrefUrl: "http://www.bilibili.com"}, 
-						{id: 2, imageUrl: "https://i.imgur.com/yXOvdOSs.jpg", hrefUrl: "http://www.bilibili.com"},
-						{id: 3, imageUrl: "https://i.imgur.com/yXOvdOSs.jpg", hrefUrl: "http://www.bilibili.com"}
+						{id: 1, imageUrl: "/static/halfave/img/Instagram.svg", hrefUrl: "http://www.bilibili.com"}, 
+						{id: 2, imageUrl: "/static/halfave/img/openSea.svg", hrefUrl: "http://www.bilibili.com"},
+						{id: 3, imageUrl: "/static/halfave/img/Discord.svg", hrefUrl: "http://www.bilibili.com"}
 					];
 
 function IconButton({imgUrl, hrefUrl}) {
@@ -308,3 +308,10 @@ ReactDOM.createRoot( document.getElementById('sec4Para'))
 	.render(<Paragraph text={"Users will connect, share ideas, and play games to enhance their wellness, always inspired by cutting-edge fashion and design. All intersections between sport and life can be found."}/>);
 ReactDOM.createRoot( document.getElementById('sec4Pic'))
 	.render(<PicWithBracketBelow imgUrl={"/static/halfave/img/basketballarcade.jpg"} leftText="THE ENTRANCE" rightText={"X11,Y28,Z90"} />);
+
+function TriggerDisappear(domId) {
+	document.getElementById(domId).classList.add("DisappearAnimation");
+}
+function TriggerAppear(domId) {
+	document.getElementById(domId).classList.add("AppearAnimation");
+}
