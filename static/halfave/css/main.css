@@ -12,11 +12,13 @@ span{
 }
 .DisappearAnimation {
 	animation-name: disappear;
-	animation-duration: 2s;
+	animation-duration: 0.7s;
+	animation-fill-mode: forwards;
 }
 .AppearAnimation {
 	animation-name: appear;
-	animation-duration: 2s;
+	animation-duration: 0.7s;
+	animation-fill-mode: forwards;
 }
 
 .avatar{
@@ -55,6 +57,10 @@ div#navBaseLine {
 	margin-right: 10px;
 	cursor: pointer;
 }
+.IconButton:hover {
+	border-color:  #a0fff2;
+	border-width: 2px;
+}
 
 .IconButtonImg {
 	width: 90%;
@@ -68,15 +74,16 @@ div#navBaseLine {
 
 .MenuItem>a>span {
 	font-size: 1em;
-	padding-left: 15px;
-	padding-right: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
 	color: #fc70ff;
 }
 
 .MenuItem>a>span:hover{
-	position: relative;
-	left: 3px;
-	top: 3px;
+
+	font-weight:1000;
+	font-family: "TerminaBold";
+
 }
 
 .Dot {
@@ -102,7 +109,7 @@ div#cover{
 	background-repeat: no-repeat;
 }
 div#cover>#coverCenter {
-	height: calc(90vh - 75px);
+	height: calc(70vh - 75px);
 	margin-top: 75px;
 }
 .SingleLine {
@@ -111,9 +118,6 @@ div#cover>#coverCenter {
 	border-bottom: 2px solid;
 }
 
-.CoverStartControl {
-
-}
 .CoverStartControl>div {
 	display: inline-block;
 }
@@ -125,7 +129,7 @@ div#cover>#coverCenter {
 	margin-bottom: 20px;
 }
 .CoverStartControl>:nth-child(2) {
-	width:5%;
+	width:6%;
 	min-width: 60px;
 }
 .CoverStartControl>:nth-child(3) {
@@ -169,6 +173,24 @@ div#cover>#coverCenter {
 	height: 3px;
 	width: 15px;
 }
+.NavHeader {
+	opacity: 0;
+}
+.NavHeader h1 {
+	color: white;
+	font-family: 'TerminaBold';
+	font-size: 4vh;
+	display: inline-block;
+	vertical-align: middle;
+}
+.NavHeader img {
+	height: 30px;
+	vertical-align: middle;
+	position: relative;
+	left: -1vh;
+	margin: auto;
+}
+
 #coverHeader {
 	height: auto;
 }
@@ -179,10 +201,10 @@ div#cover>#coverCenter {
 	color: white;
 	font-family: 'TerminaBold';
 	font-size: 10vw;
-
 	display: inline-block;
 	vertical-align: middle;
 }
+
 .CoverHeader>div {
 	display: inline-block;
 	line-height: 100%;
@@ -410,4 +432,23 @@ div#cover>#coverCenter {
 p {
 	vertical-align: middle;
 	margin: 0;
+}
+.CoverArc {
+	display: inline-block;
+	border-bottom: 1px solid #55ffe9;
+	width: 8%;
+	height: 10vw;
+	position: relative;
+	top: 20px;
+}
+.CoverArcLeft{
+	border-left: 1px solid #55ffe9;
+	left: 8%;
+	border-bottom-left-radius: 80%;
+}
+.CoverArcRight {
+	border-right: 1px solid #55ffe9;
+	margin-left: 76%;
+	border-bottom-right-radius: 80%;
+
 }

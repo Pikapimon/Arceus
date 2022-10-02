@@ -68,10 +68,11 @@ function IconButtonSet({iconWithUrl}) {
 function Nav({menuItemArray, iconWithUrlArray}) {
 	return (
 		<div className="row Nav">
-			<div className="text-md-left col-lg-6 col-md-12 col-sm-12 col-xs-l2 text-center">
-					<NavMenu menuItemArray={menuItemArray} />
+			<div className="text-md-left d-none d-lg-block col-lg-5 text-center">
+					<NavMenu menuItemArray={menuItemArray}/>
 			</div>
-			<div className="col-lg-4 offset-lg-2 col-md-12 offset-md-0 col-xs-12 offset-xs-0 text-center">
+				<NavHeader />
+			<div className="col-lg-4 offset-lg-1 col-md-12 offset-md-0 col-xs-12 offset-xs-0 text-center">
 				<IconButtonSet iconWithUrl={iconWithUrlArray}/>
 			</div>
 			<div id="navBaseLine">
@@ -150,13 +151,27 @@ function CoverHeader() {
 		</>
 	)
 }
+function NavHeader() {
+	return (
+		<div className="NavHeader flex-column justify-content-center text-center col-lg-2 " id="navHeader">
+			<img src="/static/halfave/img/BigLogo.svg" className="center-block"></img>
+		</div>
+	)
+}
 function CoverStartControl() {
 	return (
+		<>
+		<div className="CoverArc CoverArcLeft">
+		</div>
+		<div className="CoverArc CoverArcRight">
+		</div>
 		<div className="CoverStartControl w-100">
 			<div></div>
 			<div className="text-center"><SlideVector color={"#55ffe9"} /> </div>
 			<div></div>
 		</div>
+
+		</>
 	)
 }
 function SingleLine({color}) {
@@ -310,8 +325,27 @@ ReactDOM.createRoot( document.getElementById('sec4Pic'))
 	.render(<PicWithBracketBelow imgUrl={"/static/halfave/img/basketballarcade.jpg"} leftText="THE ENTRANCE" rightText={"X11,Y28,Z90"} />);
 
 function TriggerDisappear(domId) {
+	document.getElementById(domId).classList.remove("AppearAnimation");
 	document.getElementById(domId).classList.add("DisappearAnimation");
+
 }
 function TriggerAppear(domId) {
+	document.getElementById(domId).classList.remove("DisappearAnimation");
 	document.getElementById(domId).classList.add("AppearAnimation");
 }
+
+window.onscroll = function() {
+	var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+	if (scrollTop > 100)
+	{
+		TriggerDisappear("coverHeader");
+		TriggerAppear("navHeader");
+		setTimeout(() => {TriggerDisappear("coverSlideControl")}, 300);
+	}else{
+		TriggerDisappear("navHeader");
+		TriggerAppear("coverHeader");
+		setTimeout(() => {TriggerAppear("coverSlideControl")}, 300);
+	}
+
+	console.log("滚动距离" + scrollTop);
+  }
