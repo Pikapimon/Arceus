@@ -41,7 +41,7 @@ div#navBaseLine {
 
 .Nav {
 	padding-top: 20px;
-	background-color: black;
+	background-color: transparent;
 }
 .Nav>div:first {
 	width: auto;
@@ -68,7 +68,7 @@ div#navBaseLine {
 }
 
 .NavMenu {
-	margin-bottom: 20px;
+	margin-top: 8px;
 	width: auto;
 }
 
@@ -110,7 +110,6 @@ div#cover{
 }
 div#cover>#coverCenter {
 	height: calc(70vh - 75px);
-	margin-top: 75px;
 }
 .SingleLine {
 	width: 100%;
@@ -124,8 +123,8 @@ div#cover>#coverCenter {
 .CoverStartControl>:nth-child(1) {
 	width:32%;
 	height: 10px;
-	border-top: 1px solid #fc70ff;
-	border-bottom: 1px solid #55ffe9;
+	border-top: 2px solid #fc70ff;
+	border-bottom: 2px solid #55ffe9;
 	margin-bottom: 20px;
 }
 .CoverStartControl>:nth-child(2) {
@@ -135,8 +134,8 @@ div#cover>#coverCenter {
 .CoverStartControl>:nth-child(3) {
 	width:32%;
 	height: 10px;
-	border-top: 1px solid #fc70ff;
-	border-bottom: 1px solid #55ffe9;
+	border-top: 2px solid #fc70ff;
+	border-bottom: 2px solid #55ffe9;
 	margin-bottom: 20px;
 }
 .SlideVector {
@@ -216,30 +215,26 @@ div#cover>#coverCenter {
 	display: inline-block;
 }
 .CoverHeader>div>div:nth-child(1) {
-	width: 50%;
+	width: 55%;
 }
 .CoverHeader>div>div:nth-child(2) {
-	width: 11%;
+	width: 15%;
 }
 .CoverHeader>div>div:nth-child(3) {
-	width: 27%;
-}
-.CoverHeader>div>div:nth-child(4) {
-	width: 12%
+	width: 30%;
 }
 .CoverHeader img {
-	width: 26vw;
+	width: 61vw;
 	vertical-align: middle;
-	position: relative;
-	left: -7vw;
-	top: 1vw;
 }
 .Header {
 	color: #55ffe9;
-	font-size: 1.3rem;
+	font-size: 2rem;
+	font-weight: bold;
 }
 .Paragraph {
 	color: whitesmoke;
+	font-size: 1.5rem;
 }
 #section1>div {
 	height: 80vh;
@@ -313,7 +308,8 @@ div#cover>#coverCenter {
 	transform: rotate(180deg);
 	transform-origin: 50%,50%;
 }
-#Sec1Center>div:nth-child(2)>div {
+#Sec1Center .Paragraph {
+	font-size: 1.25rem;
 }
 
 #section2>div:nth-child(1) {
@@ -386,10 +382,10 @@ div#cover>#coverCenter {
 	margin-top: 20px;
 }
 .bottomText>.Header>span {
-	font-size: 0.1em;
+	font-size: 0.625rem;
 }
 .bottomText {
-	font-size: 0.1em;
+	font-size: 0.625rem;
 	color :#55ffe9;
 }
 #section3 {
@@ -435,20 +431,31 @@ p {
 }
 .CoverArc {
 	display: inline-block;
-	border-bottom: 1px solid #55ffe9;
+	border-bottom: 2px solid #55ffe9;
 	width: 8%;
-	height: 10vw;
+	height: 60px;
 	position: relative;
-	top: 20px;
+	padding: 0;
+	top: 29px;
 }
 .CoverArcLeft{
-	border-left: 1px solid #55ffe9;
-	left: 8%;
-	border-bottom-left-radius: 80%;
+	border-left: 2px solid #55ffe9;
+	margin-left: 0;
+	border-bottom-left-radius: 60%;
 }
 .CoverArcRight {
-	border-right: 1px solid #55ffe9;
-	margin-left: 76%;
-	border-bottom-right-radius: 80%;
+	border-right: 2px solid #55ffe9;
+	margin-left: 68%;
+	border-bottom-right-radius: 60%;
 
+}
+.CoverDots {
+	
+	width: 5px;
+}
+.CoverDots1 {
+	margin-left: 7.5%;
+}
+.CoverDots2 {
+	margin-left: 92%;
 }

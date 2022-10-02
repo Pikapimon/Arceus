@@ -68,11 +68,11 @@ function IconButtonSet({iconWithUrl}) {
 function Nav({menuItemArray, iconWithUrlArray}) {
 	return (
 		<div className="row Nav">
-			<div className="text-md-left d-none d-lg-block col-lg-5 text-center">
+			<div className="text-md-left d-none d-lg-block col-lg-5 text-center row flex-column justify-content-center">
 					<NavMenu menuItemArray={menuItemArray}/>
 			</div>
 				<NavHeader />
-			<div className="col-lg-4 offset-lg-1 col-md-12 offset-md-0 col-xs-12 offset-xs-0 text-center">
+			<div className="col-lg-4 offset-lg-1 col-md-12 offset-md-0 col-xs-12 offset-xs-0 text-md-center text-lg-end">
 				<IconButtonSet iconWithUrl={iconWithUrlArray}/>
 			</div>
 			<div id="navBaseLine">
@@ -136,10 +136,7 @@ function CoverHeader() {
 	return (
 		<>
 		<div className="CoverHeader flex-column justify-content-center text-center">
-			<h1>
-				HALF
-			</h1>
-			<img src="/static/halfave/img/Ave_metallic.png" className="center-block"></img>
+			<img src="/static/halfave/img/BigLogo.svg" className="center-block"></img>
 			<div>
 				<div className="bottomText text-start">1234 Half St</div>
 				<div className="bottomText text-start">XYZ</div>
@@ -161,9 +158,19 @@ function NavHeader() {
 function CoverStartControl() {
 	return (
 		<>
-		<div className="CoverArc CoverArcLeft">
+		<div>
+			<div className="CoverDots CoverDots1"><DotsArray dotsNum={3} direction={1} color={"#55ffe9"} size={"3px"}/></div>
+			<div className="CoverDots CoverDots2"><DotsArray dotsNum={3} direction={1} color={"#55ffe9"} size={"3px"}/></div>
 		</div>
-		<div className="CoverArc CoverArcRight">
+		<div>
+			<div className="CoverDots CoverDots1"><DotsArray dotsNum={3} direction={1} color={"#fc70ff"} size={"3px"}/></div>
+			<div className="CoverDots CoverDots2"><DotsArray dotsNum={3} direction={1} color={"#fc70ff"} size={"3px"}/></div>
+		</div>
+		<div>
+			<div className="CoverArc CoverArcLeft">
+			</div>
+			<div className="CoverArc CoverArcRight">
+			</div>
 		</div>
 		<div className="CoverStartControl w-100">
 			<div></div>
@@ -234,12 +241,12 @@ function Sec1Center() {
 	return (
 		<div className="Sec1Center h-100" id="Sec1Center">
 			<div className="row h-25">
-				<div className="col-1 offset-3 h-100"><div className="row h-100 flex-column justify-content-center"><DotsArray dotsNum={3}  direction={0} color={"#fc70ff"}/></div></div>
-				<div className="col-4"><div className="row h-100 flex-column justify-content-center"><Header text={"Who We Are"} /></div></div>
+				<div className="col-1 offset-2 h-100"><div className="row h-100 flex-column justify-content-center"><DotsArray dotsNum={3}  direction={0} color={"#fc70ff"}/></div></div>
+				<div className="col-6"><div className="row h-100 flex-column justify-content-center"><Header text={"Who We Are"} /></div></div>
 				<div className="col-1 h-100"><div className="row h-100 flex-column justify-content-center"><DotsArray dotsNum={3}  direction={0} color={"#fc70ff"}/></div></div>
 			</div>
 			<div className="h-75 row w-100">
-				<div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+				<div className="col-lg-10 offset-lg-1 col-md-12 ">
 					<Paragraph className="mw-50" text={"Half Ave highlights the unbreakable connection between style and sport to create a wellness based digital future. Here you can play games, compete, innovate, express your style, and connect with new friends as you create the future of sport-style in our metaverse."}/>
 				</div>
 			</div>
