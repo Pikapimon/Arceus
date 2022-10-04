@@ -40,14 +40,17 @@ return (
 
 //MyCode
 const imageUrlArr = [
-						{id: 1, imageUrl: "/static/halfave/img/Instagram.svg", hrefUrl: "http://www.bilibili.com"}, 
-						{id: 2, imageUrl: "/static/halfave/img/openSea.svg", hrefUrl: "http://www.bilibili.com"},
-						{id: 3, imageUrl: "/static/halfave/img/Discord.svg", hrefUrl: "http://www.bilibili.com"}
+						{id: 1, imageUrl: "/static/halfave/img/Instagram.svg", hrefUrl: ""}, 
+						{id: 2, imageUrl: "/static/halfave/img/openSea.svg", hrefUrl: ""},
+						{id: 3, imageUrl: "/static/halfave/img/Discord.svg", hrefUrl: ""}
 					];
 
 function IconButton({imgUrl, hrefUrl}) {
 	function onClick() {
-		window.open(hrefUrl);
+		if(hrefUrl != "")
+		{
+			window.open(hrefUrl);
+		}
 	}
 	return (
 		<button className="IconButton" onClick={onClick}>
@@ -142,7 +145,7 @@ function CoverHeader() {
 				<IconButtonSet iconWithUrl={imageUrlArr}/>
 			</div>
 			<img src="/static/halfave/img/BigLogo.svg" className="center-block"></img>
-			<div>
+			<div id="coverBottomText">
 				<div className="bottomText text-start">1234 Half St</div>
 				<div className="bottomText text-start">XYZ</div>
 				<div className="bottomText text-end">Metaverse</div>
@@ -162,8 +165,10 @@ function NavHeader() {
 }
 function CoverStartControl() {
 	return (
-		<div id="coverBottom">
-			<img src="/static/halfave/img/Arrow.svg"></img>
+		<div id="coverBottom" className="row flex-column justify-content-end text-center">
+			<div className="col-12 text-center">
+				<img src="/static/halfave/img/Arrow.svg"></img>
+			</div>
 		</div>
 	)
 }
@@ -229,7 +234,7 @@ function Sec1Center() {
 			<div className="row h-25">
 				<div className="col-12  flex-column justify-content-center">
 						<DotsArray dotsNum={3}  direction={0} color={"#fc70ff"} className="d-inline-block"/>
-						<Header text={"Who We Are"} className="d-inline-block"/>
+						<Header text={"WHO WE ARE"} className="d-inline-block"/>
 						<DotsArray dotsNum={3}  direction={0} color={"#fc70ff"}  className="d-inline-block"/>
 				</div>
 			</div>
