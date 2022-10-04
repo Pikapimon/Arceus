@@ -58,9 +58,11 @@ function IconButton({imgUrl, hrefUrl}) {
 
 function IconButtonSet({iconWithUrl}) {
 	const buttonList = iconWithUrl.map(ele => <IconButton key={ele.id} imgUrl={ele.imageUrl} hrefUrl={ele.hrefUrl}/>)
-	return <div className="IconButtonSet">
+	return (
+	<div className="IconButtonSet">
 		{buttonList}
 	</div>
+	)
 }
 
 //ReactDOM.createRoot( document.getElementById('buttonSet')).render(<IconButtonSet iconWithUrl={imageUrlArr}/>);
@@ -72,7 +74,7 @@ function Nav({menuItemArray, iconWithUrlArray}) {
 					<NavMenu menuItemArray={menuItemArray}/>
 			</div>
 				<NavHeader />
-			<div className="col-lg-4 offset-lg-1 col-md-12 offset-md-0 col-xs-12 offset-xs-0 text-md-center text-lg-end">
+			<div className="col-lg-4 offset-lg-1 col-md-12 offset-md-0 col-xs-12 offset-xs-0 text-sm-center text-md-center text-lg-end d-none d-lg-block">
 				<IconButtonSet iconWithUrl={iconWithUrlArray}/>
 			</div>
 			<div id="navBaseLine">
@@ -136,6 +138,9 @@ function CoverHeader() {
 	return (
 		<>
 		<div className="CoverHeader flex-column justify-content-center text-center">
+			<div className="d-sm-block d-md-block d-lg-none d-xl-none">
+				<IconButtonSet iconWithUrl={imageUrlArr}/>
+			</div>
 			<img src="/static/halfave/img/BigLogo.svg" className="center-block"></img>
 			<div>
 				<div className="bottomText text-start">1234 Half St</div>
@@ -157,28 +162,9 @@ function NavHeader() {
 }
 function CoverStartControl() {
 	return (
-		<>
-		<div>
-			<div className="CoverDots CoverDots1"><DotsArray dotsNum={3} direction={1} color={"#55ffe9"} size={"3px"}/></div>
-			<div className="CoverDots CoverDots2"><DotsArray dotsNum={3} direction={1} color={"#55ffe9"} size={"3px"}/></div>
+		<div id="coverBottom">
+			<img src="/static/halfave/img/Arrow.svg"></img>
 		</div>
-		<div>
-			<div className="CoverDots CoverDots1"><DotsArray dotsNum={3} direction={1} color={"#fc70ff"} size={"3px"}/></div>
-			<div className="CoverDots CoverDots2"><DotsArray dotsNum={3} direction={1} color={"#fc70ff"} size={"3px"}/></div>
-		</div>
-		<div>
-			<div className="CoverArc CoverArcLeft">
-			</div>
-			<div className="CoverArc CoverArcRight">
-			</div>
-		</div>
-		<div className="CoverStartControl w-100">
-			<div></div>
-			<div className="text-center"><SlideVector color={"#55ffe9"} /> </div>
-			<div></div>
-		</div>
-
-		</>
 	)
 }
 function SingleLine({color}) {
@@ -239,14 +225,16 @@ function Bracket() {
 
 function Sec1Center() {
 	return (
-		<div className="Sec1Center h-100" id="Sec1Center">
+		<div className="Sec1Center">
 			<div className="row h-25">
-				<div className="col-1 offset-2 h-100"><div className="row h-100 flex-column justify-content-center"><DotsArray dotsNum={3}  direction={0} color={"#fc70ff"}/></div></div>
-				<div className="col-6"><div className="row h-100 flex-column justify-content-center"><Header text={"Who We Are"} /></div></div>
-				<div className="col-1 h-100"><div className="row h-100 flex-column justify-content-center"><DotsArray dotsNum={3}  direction={0} color={"#fc70ff"}/></div></div>
+				<div className="col-12  flex-column justify-content-center">
+						<DotsArray dotsNum={3}  direction={0} color={"#fc70ff"} className="d-inline-block"/>
+						<Header text={"Who We Are"} className="d-inline-block"/>
+						<DotsArray dotsNum={3}  direction={0} color={"#fc70ff"}  className="d-inline-block"/>
+				</div>
 			</div>
 			<div className="h-75 row w-100">
-				<div className="col-lg-10 offset-lg-1 col-md-12 ">
+				<div className="col-lg-10 offset-lg-1 col-md-12 col-xs-12">
 					<Paragraph className="mw-50" text={"Half Ave highlights the unbreakable connection between style and sport to create a wellness based digital future. Here you can play games, compete, innovate, express your style, and connect with new friends as you create the future of sport-style in our metaverse."}/>
 				</div>
 			</div>
@@ -255,23 +243,38 @@ function Sec1Center() {
 }
 function Sec5Center() {
 	return (
-		<div className="Sec1Center h-100" id="Sec1Center">
+		<div className="Sec1Center h-100" id="Sec5Center">
 			<div className="row h-50">
-				<div className="col-1 offset-lg-2 offset-md-2 offset-sm-1 offset-xs-0 h-100"><div className="row h-100 flex-column justify-content-center text-center"><DotsArray dotsNum={3}  direction={0} color={"#fc70ff"}/></div></div>
-				<div className="col-lg-6 col-md-6 col-sm-8 col-xs-10 text-center"><div className="row h-100 flex-column justify-content-center"><Header text={"FOLLOW US"} /></div></div>
-				<div className="col-1 h-100"><div className="row h-100 flex-column justify-content-center text-center"><DotsArray dotsNum={3}  direction={0} color={"#fc70ff"}/></div></div>
+				<div className="col-12 text-center">
+					<div className="row h-100 flex-column justify-content-center">
+						<div className="col-12">
+							<DotsArray dotsNum={3}  direction={0} color={"#fc70ff"}/>
+							<Header text={"FOLLOW US"} />
+							<DotsArray dotsNum={3}  direction={0} color={"#fc70ff"}/>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div className="row h-50 text-center">
-				<Header text={"AND STAY UP TO DATE"} />
+				<div className="col-12">
+					<Header text={"AND STAY UP TO DATE"} />
+				</div>
 			</div>
 			<div className="row">
-				<div className="text-center">
-				<IconButtonSet iconWithUrl={imageUrlArr} />
+				<div className="text-center d-none d-lg-block d-xl-block">
+					<IconButtonSet iconWithUrl={imageUrlArr} />
+				</div>
+				<div className="text-center d-block d-lg-none d-xl-none" id="sec5IconSetMobile">
+					<IconButtonSet iconWithUrl={imageUrlArr} />
 				</div>
 			</div>
 		</div>
 	)
 }
+ReactDOM.createRoot( document.getElementById('sec1Top'))
+	.render(<BracketHorizon />);
+	ReactDOM.createRoot( document.getElementById('sec1Bottom'))
+	.render(<BracketHorizon />);
 ReactDOM.createRoot( document.getElementById('sec1Left'))
 	.render(<Bracket />);
 ReactDOM.createRoot( document.getElementById('sec1Right'))
@@ -284,8 +287,12 @@ ReactDOM.createRoot( document.getElementById('sec2Header'))
 	.render(<Header text={"OUR MISSON"} />);
 ReactDOM.createRoot( document.getElementById('sec2HeaderDeco'))
 	.render(<DotsArray direction={0} dotsNum={1} color={"#fc70ff"} size={"5px"} />);
+ReactDOM.createRoot( document.getElementById('sec3MobileHeaderDeco'))
+	.render(<DotsArray direction={0} dotsNum={2} color={"#fc70ff"} size={"5px"} />);
 ReactDOM.createRoot( document.getElementById('sec2Para'))
 	.render(<Paragraph text={"Creating an immersive world where fashion and sports-style drive the creation of a wellness based reality."}/>);
+	ReactDOM.createRoot( document.getElementById('sec3MobilePara'))
+	.render(<Paragraph text={"Decentralization provides global access to designers, athletes, fitness influencers, gamers, and anyone else who wants to populate our unique fashion-first, wellness ecosystem."}/>);
 
 function BracketHorizon() {
 	return(
@@ -302,8 +309,8 @@ function BottomText({leftText, rightText})
 {
 	return (
 		<div className="row">
-			<div className="col-3 bottomText text-start"><Header  text={leftText}/></div>
-			<div className="col-3 offset-6 bottomText text-end"><Header  text={rightText}/></div>
+			<div className="col-6 bottomText text-start"><Header  text={leftText}/></div>
+			<div className="col-6 bottomText text-end"><Header  text={rightText}/></div>
 		</div>
 	)
 }
@@ -318,10 +325,21 @@ function PicWithBracketBelow({imgUrl, leftText, rightText}) {
 }
 ReactDOM.createRoot( document.getElementById('sec2Pic'))
 	.render(<PicWithBracketBelow imgUrl={"/static/halfave/img/sec2pic.jpg"} leftText="THE ENTRANCE" rightText={"X11,Y28,Z90"} />);
+ReactDOM.createRoot( document.getElementById('sec2PicMobile'))
+	.render(<PicWithBracketBelow imgUrl={"/static/halfave/img/sec2Mobile.jpg"} leftText="THE ENTRANCE" rightText={"X11,Y28,Z90"} />);
+	ReactDOM.createRoot( document.getElementById('sec3PicMobile'))
+	.render(<PicWithBracketBelow imgUrl={"/static/halfave/img/sec3Mobile.jpg"} leftText="THE FOOTBALL COURT" rightText={"X11, Y28, Z60"} />);
+
 ReactDOM.createRoot( document.getElementById('sec3Dots'))
 	.render(<DotsArray direction={0} dotsNum={2} color={"#fc70ff"} size={"5px"} />);
+
 ReactDOM.createRoot( document.getElementById('sec3Para'))
 	.render(<Paragraph text={"Decentralization provides global access to designers, athletes, fitness influencers, gamers, and anyone else who wants to populate our unique fashion-first, wellness ecosystem."}/>);
+//ReactDOM.createRoot( document.getElementById('sec3Dots'))
+	//.render(<DotsArray direction={0} dotsNum={2} color={"#fc70ff"} size={"5px"} />);
+//ReactDOM.createRoot( document.getElementById('sec3Para'))
+	//.render(<Paragraph text={"Decentralization provides global access to designers, athletes, fitness influencers, gamers, and anyone else who wants to populate our unique fashion-first, wellness ecosystem."}/>);
+
 ReactDOM.createRoot( document.getElementById('sec3BottomText'))
 	.render(<BottomText leftText={"THE BASKETBALL COURT"} rightText={"X11, Y28, Z60"}/>);
 ReactDOM.createRoot( document.getElementById('sec4Dots'))
@@ -329,7 +347,9 @@ ReactDOM.createRoot( document.getElementById('sec4Dots'))
 ReactDOM.createRoot( document.getElementById('sec4Para'))
 	.render(<Paragraph text={"Users will connect, share ideas, and play games to enhance their wellness, always inspired by cutting-edge fashion and design. All intersections between sport and life can be found."}/>);
 ReactDOM.createRoot( document.getElementById('sec4Pic'))
-	.render(<PicWithBracketBelow imgUrl={"/static/halfave/img/basketballarcade.jpg"} leftText="THE ENTRANCE" rightText={"X11,Y28,Z90"} />);
+	.render(<PicWithBracketBelow imgUrl={"/static/halfave/img/basketballarcade.jpg"} leftText="THE BASKETBALL ARCADE" rightText={"X11, Y28, Z30"} />);
+	ReactDOM.createRoot( document.getElementById('sec4PicMobile'))
+	.render(<PicWithBracketBelow imgUrl={"/static/halfave/img/sec4Mobile.jpg"} leftText="THE BASKETBALL ARCADE" rightText={"X11, Y28, Z30"} />);
 
 function TriggerDisappear(domId) {
 	document.getElementById(domId).classList.remove("AppearAnimation");
@@ -353,6 +373,4 @@ window.onscroll = function() {
 		TriggerAppear("coverHeader");
 		setTimeout(() => {TriggerAppear("coverSlideControl")}, 300);
 	}
-
-	console.log("滚动距离" + scrollTop);
   }

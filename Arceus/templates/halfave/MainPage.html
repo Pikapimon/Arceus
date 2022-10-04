@@ -23,16 +23,18 @@
 		<div class="row flex-column justify-content-center h-75" id="coverCenter"> 
 			<div id="coverHeader"></div>
 		</div>
-		<div class="row text-center h-25" id="coverSlideControl"></div>
+		<div class="row text-center h-25 flex-column justify-content-end" id="coverSlideControl"></div>
 	</div>
 
-	<div id="section1" class="container-fluid text-center">
-		<div class="row flex-column justify-content-center">
-			<div class="col-10 offset-1 h-75 " id="section1Main">
+	<div id="section1" class="container-fluid text-center flex-column justify-content-center">
+		<div class="row flex-column justify-content-center h-100">
+			<div class="col-10 offset-1" id="section1Main">
 				<div class="row h-100 flex-column justify-content-center">
-					<div class="col-2 h-75 center-block" id="sec1Left"></div>
-					<div class="col-8 h-50 text-center" id="sec1Center"></div>
-					<div class="col-2 h-75 text-center" id="sec1Right"></div>
+					<div id="sec1Top" class="d-block d-lg-none col-10 offset-1"></div>
+					<div class="d-none d-lg-inline-block col-lg-2" id="sec1Left"></div>
+					<div class="col-10 offset-xs-1 offset-sm-1 offset-md-1 col-lg-8 offset-lg-0 text-center d-inline-block" id="sec1Center"></div>
+					<div class="d-none d-lg-inline-block col-lg-2 text-center" id="sec1Right"></div>
+					<div id="sec1Bottom" class="d-block d-lg-none col-10 offset-1"></div>
 				</div>
 			</div>
 		</div>
@@ -48,22 +50,40 @@
 				</div>
 			</div>
 		</div>
-		<div class="marginBlock"></div>
 		<div class="row h-50">
 			<div class="col-lg-8 offset-lg-4 col-md-12">
 				<div class="row h-80">
-					<div class="col-12" id="sec2Pic"></div>
+					<div class="col-12 d-none d-lg-block" id="sec2Pic"></div>
+					<div class="col-12 d-block d-lg-none" id="sec2PicMobile"></div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<div id="section3" class="container-fluid bg-image" >
+	<div id="section3Mobile" class="d-block d-lg-none">
+		<div class="row h-50">
+			<div class="col-lg-4 col-xs-12">
+				<div class="row h-75">
+					<div class="row text-lg-start text-md-center text-sm-center text-xs-center" id="sec3MobileHeader"></div>
+					<div class="col-lg-1 col-md-12 text-center"><div id="sec3MobileHeaderDeco" class="text-lg-start text-md-center text-sm-center text-xs-center"></div></div>
+					<div class="row text-lg-start text-xs-center" id="sec3MobilePara"></div>
+				</div>
+			</div>
+		</div>
+		<div class="row h-50">
+			<div class="col-lg-8 offset-lg-4 col-md-12">
+				<div class="row h-80">
+					<div class="col-12 d-none d-lg-block" id="sec3Pic"></div>
+					<div class="col-12 d-block d-lg-none" id="sec3PicMobile"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="section3" class="container-fluid bg-image d-none d-lg-block" >
 		<div class="row h-50">
 			<div class="col-lg-4 col-xs-12">
 				<div class="row h-75">
 					<div class="col-lg-1 col-md-12 text-center"><div id="sec3Dots"></div></div>
-					<div class="row text-lg-start text-md-center" id="sec3Para"></div>
+					<div class="row text-lg-start text-md-center text-dark" id="sec3Para"></div>
 				</div>
 			</div>
 		</div>
@@ -78,10 +98,10 @@
 
 	<div id="section4" class="container-fluid">
 		<div class="row h-50">
-			<div class="col-lg-4 offset-lg-8 col-xs-12">
+			<div class="col-lg-5 offset-lg-6 col-xs-12">
 				<div class="row h-75">
-					<div class="col-lg-2 col-md-12 text-left"><div id="sec4Dots" class="w-100"></div></div>
-					<div class="row text-lg-start text-md-center" id="sec4Para"></div>
+					<div class="col-lg-2 col-md-12 text-sm-center text-md-center text-lg-start"><div id="sec4Dots" class="w-100"></div></div>
+					<div class="row text-md-center text-lg-start " id="sec4Para"></div>
 				</div>
 			</div>
 		</div>
@@ -89,7 +109,8 @@
 		<div class="row h-50">
 			<div class="col-lg-8 col-md-12">
 				<div class="row h-80">
-					<div class="col-12" id="sec4Pic"></div>
+					<div class="col-12 d-none d-lg-block" id="sec4Pic"></div>
+					<div class="col-12 d-block d-lg-none" id="sec4PicMobile"></div>
 				</div>
 			</div>
 		</div>
@@ -97,7 +118,7 @@
 
 	<div id="section5" class="container-fluid">
 		<div class="row h-100 flex-column justify-content-center">
-			<div class="col-lg-6 offset-lg-3 col-xs-12" id="sec5Center">
+			<div class="col-lg-12 col-xs-12" id="sec5Center">
 			</div>
 		</div>
 	</div>

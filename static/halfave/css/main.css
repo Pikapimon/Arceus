@@ -10,6 +10,19 @@ span{
 *{
 	font-family: 'Termina';
 }
+@media (min-width: 544px) {  
+	h1 {font-size:24px;} /*1rem = 16px*/
+  }
+   
+  /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+  @media (min-width: 768px) {  
+	html {font-size:26px;} /*1rem = 16px*/
+  }
+   
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) { 
+	html {font-size:16px;} /*1rem = 16px*/
+  }
 .DisappearAnimation {
 	animation-name: disappear;
 	animation-duration: 0.7s;
@@ -21,15 +34,14 @@ span{
 	animation-fill-mode: forwards;
 }
 
-.avatar{
-	border-radius:  50%;
-}
-
 div#navBaseLine {
+	position: fixed;
 	height: 0;
+	top: 65px;
 	margin-top: 10px;
 	border-bottom: 2px solid #f499f591;
 	box-shadow: 0px 0px 30px 1px #fc70ff;
+	width: 90%;
 }
 .container-fluid{
 	padding: 0;
@@ -38,13 +50,18 @@ div#navBaseLine {
 	width: 100%;
 	
 }
-
+#nav {
+	width: 90%;
+}
 .Nav {
 	padding-top: 20px;
 	background-color: transparent;
 }
 .Nav>div:first {
 	width: auto;
+}
+#navFill {
+	height: calc(37.5vh - 165px);
 }
 .IconButton {
 	width: 40px;
@@ -56,6 +73,18 @@ div#navBaseLine {
 	margin-left: 10px;
 	margin-right: 10px;
 	cursor: pointer;
+}
+.CoverHeader .IconButton {
+	width: 100px;
+	height: 100px;
+}
+#sec5Center .IconButton {
+	width: 100px;
+	height: 100px;
+}
+#coverBottom img {
+	width: 90%;
+	margin-left: 5%;
 }
 .IconButton:hover {
 	border-color:  #a0fff2;
@@ -92,6 +121,7 @@ div#navBaseLine {
 .DotsArrayHorizon {
 	min-width: 27px;
 	padding: 0;
+	display: inline-block;
 }
 .DotsArrayHorizon>.Dot {
 	display: inline-block;
@@ -204,7 +234,7 @@ div#cover>#coverCenter {
 	vertical-align: middle;
 }
 
-.CoverHeader>div {
+.CoverHeader>div:has(.bottomText) {
 	display: inline-block;
 	line-height: 100%;
 	width: 60%;
@@ -223,28 +253,33 @@ div#cover>#coverCenter {
 .CoverHeader>div>div:nth-child(3) {
 	width: 30%;
 }
-.CoverHeader img {
-	width: 61vw;
+.CoverHeader>img {
+	width: 70vw;
 	vertical-align: middle;
 }
 .Header {
 	color: #55ffe9;
 	font-size: 2rem;
 	font-weight: bold;
+	display: inline-block;
 }
 .Paragraph {
 	color: whitesmoke;
 	font-size: 1.5rem;
 }
+#section1 {
+	height: calc(50vh + 300px);
+	min-height: 500px;
+}
 #section1>div {
-	height: 80vh;
-	position: relative;
-	top: 75px;
 }
 #section1Main {
 	background-color: rgb(18, 30, 32);	
 	border-radius: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
+
 #test {
 	width: 500px;
 }
@@ -300,6 +335,22 @@ div#cover>#coverCenter {
 	bottom: 1px;
 	left: 1px;
 }
+#sec1Top {
+	-ms-transform: rotate(180deg); /* IE 9 */
+    -ms-transform-origin:50% 50%; /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Safari and Chrome */
+    -webkit-transform-origin:50% 50%; /* Safari and Chrome */
+	transform: rotate(180deg);
+	transform-origin: 50%,50%;
+	margin-top: 50px;
+}
+#sec1Bottom {
+	margin-bottom: 50px;
+
+}
+#sec1Left {
+	height: 100%;
+}
 #sec1Right {
 	-ms-transform: rotate(180deg); /* IE 9 */
     -ms-transform-origin:50% 50%; /* IE 9 */
@@ -307,16 +358,22 @@ div#cover>#coverCenter {
     -webkit-transform-origin:50% 50%; /* Safari and Chrome */
 	transform: rotate(180deg);
 	transform-origin: 50%,50%;
+	height: 100%;
 }
 #Sec1Center .Paragraph {
 	font-size: 1.25rem;
 }
 
 #section2>div:nth-child(1) {
-	position: relative;
-	top: 75px;
+
 }
 #section2>div {
+	padding-left:5% ;
+	padding-right: 5%;
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+#section3Mobile>div {
 	padding-left:5% ;
 	padding-right: 5%;
 	padding-top: 5%;
@@ -390,7 +447,7 @@ div#cover>#coverCenter {
 }
 #section3 {
 	height: calc(100vh - 75px);
-	background-image: url('/static/halfave/img/basketballcounrt.png');
+	background-image: url('/static/halfave/img/footballcourt.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -413,7 +470,7 @@ div#cover>#coverCenter {
 }
 
 #section5 {
-	height: 500px;
+	height: 700px;
 	background-color: rgb(30, 29, 30);
 }
 #section5 * {
@@ -436,7 +493,7 @@ p {
 	height: 60px;
 	position: relative;
 	padding: 0;
-	top: 29px;
+	top: 26px;
 }
 .CoverArcLeft{
 	border-left: 2px solid #55ffe9;
@@ -450,12 +507,39 @@ p {
 
 }
 .CoverDots {
-	
+	display: inline-block;
 	width: 5px;
 }
 .CoverDots1 {
-	margin-left: 7.5%;
 }
 .CoverDots2 {
-	margin-left: 92%;
+	margin-left: 83%;
+}
+
+#coverBottom {
+	height: 200px;
+}
+#sec1Center .DotsArrayHorizon {
+	width: auto;
+	height: 100%;
+}
+#sec1Center .Header {
+	width: auto;
+	vertical-align: middle;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.Sec1Center>div:nth-child(1) {
+	margin-bottom: 50px;
+}
+#sec5Center .DotsArrayHorizon {
+	width: auto;
+	height: auto;
+}
+#sec5Center .Header {
+	width: auto;
+	vertical-align: middle;
+	margin-left: 20px;
+	margin-right: 20px;
+
 }

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="79 45 1283 220" width="1283" height="220">
+  <defs/>
+  <metadata> Produced by OmniGraffle 7.19.4\n2022-10-03 19:30:46 +0000</metadata>
+  <g id="Canvas_1" stroke-opacity="1" stroke="none" fill-opacity="1" stroke-dasharray="none" fill="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Group_3">
+        <g id="Graphic_4">
+          <path d="M 663 246.5 L 171 246.5 C 121.294 246.5 81 206.206 81 156.5 L 81 150" stroke="#55ffe9" stroke-linecap="butt" stroke-linejoin="round" stroke-width="2"/>
+        </g>
+      </g>
+      <g id="Group_5">
+        <g id="Graphic_6">
+          <path d="M 779 247.5 L 1271 247.5 C 1320.71 247.5 1361 207.206 1361 157.5 L 1361 151" stroke="#55ffe9" stroke-linecap="butt" stroke-linejoin="round" stroke-width="2"/>
+        </g>
+      </g>
+      <g id="Graphic_7">
+        <path d="M 708 239 L 721 251.156 L 734 239 L 734 244.844 L 721 257 L 708 244.844 Z" fill="#55ffe9"/>
+      </g>
+      <g id="Graphic_8">
+        <path d="M 708 229 L 721 241.156 L 734 229 L 734 234.844 L 721 247 L 708 234.844 Z" fill="#55ffe9"/>
+      </g>
+      <g id="Graphic_9">
+        <path d="M 708 250 L 721 262.831 L 734 250 L 734 252.168 L 721 264.999 L 708 252.168 Z" fill="#55ffe9"/>
+      </g>
+      <g id="Graphic_10">
+        <path d="M 663 246.5 L 171 246.5 C 121.294 246.5 81 206.206 81 156.5 L 81 150" stroke="white" stroke-linecap="butt" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_11">
+        <path d="M 779 247 L 1271 247 C 1320.71 247 1361 206.706 1361 157 L 1361 150.5" stroke="white" stroke-linecap="butt" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_12">
+        <line x1="664" y1="247" x2="189" y2="247" stroke="#55ffe9" stroke-linecap="butt" stroke-linejoin="round" stroke-width="3"/>
+      </g>
+      <g id="Graphic_13">
+        <line x1="664" y1="234" x2="189" y2="234" stroke="#fc70ff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_14">
+        <line x1="1253" y1="234" x2="779" y2="234" stroke="#fc70ff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_15">
+        <line x1="1253" y1="247" x2="779" y2="247" stroke="#55ffe9" stroke-linecap="butt" stroke-linejoin="round" stroke-width="3"/>
+      </g>
+      <g id="Graphic_16">
+        <rect x="79" y="96" width="3" height="3" fill="#fc70ff"/>
+      </g>
+      <g id="Graphic_17">
+        <rect x="79" y="104" width="3" height="3" fill="#fc70ff"/>
+      </g>
+      <g id="Graphic_18">
+        <rect x="79" y="112" width="3" height="3" fill="#fc70ff"/>
+      </g>
+      <g id="Graphic_19">
+        <rect x="79" y="45" width="3" height="3" fill="#55ffe9"/>
+      </g>
+      <g id="Graphic_20">
+        <rect x="79" y="53" width="3" height="3" fill="#55ffe9"/>
+      </g>
+      <g id="Graphic_21">
+        <rect x="79" y="61" width="3" height="3" fill="#55ffe9"/>
+      </g>
+      <g id="Graphic_22">
+        <rect x="1358" y="45" width="3" height="3" fill="#55ffe9"/>
+      </g>
+      <g id="Graphic_23">
+        <rect x="1358" y="53" width="3" height="3" fill="#55ffe9"/>
+      </g>
+      <g id="Graphic_24">
+        <rect x="1358" y="61" width="3" height="3" fill="#55ffe9"/>
+      </g>
+      <g id="Graphic_25">
+        <rect x="1358" y="96" width="3" height="3" fill="#fc70ff"/>
+      </g>
+      <g id="Graphic_26">
+        <rect x="1358" y="104" width="3" height="3" fill="#fc70ff"/>
+      </g>
+      <g id="Graphic_27">
+        <rect x="1358" y="112" width="3" height="3" fill="#fc70ff"/>
+      </g>
+    </g>
+  </g>
+</svg>
