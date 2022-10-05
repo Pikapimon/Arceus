@@ -40,9 +40,9 @@ return (
 
 //MyCode
 const imageUrlArr = [
-						{id: 1, imageUrl: "/static/halfave/img/Instagram.svg", hrefUrl: ""}, 
-						{id: 2, imageUrl: "/static/halfave/img/openSea.svg", hrefUrl: ""},
-						{id: 3, imageUrl: "/static/halfave/img/Discord.svg", hrefUrl: ""}
+						{id: 1, imageUrl: "/static/halfave/img/Instagram.svg", hrefUrl: "#cover"}, 
+						{id: 2, imageUrl: "/static/halfave/img/openSea.svg", hrefUrl: "#cover"},
+						{id: 3, imageUrl: "/static/halfave/img/Discord.svg", hrefUrl: "#cover"}
 					];
 
 function IconButton({imgUrl, hrefUrl}) {
@@ -53,8 +53,8 @@ function IconButton({imgUrl, hrefUrl}) {
 		}
 	}
 	return (
-		<button className="IconButton" onClick={onClick}>
-			<img src={imgUrl} className="IconButtonImg"></img>
+		<button className="IconButton">
+			<a href={hrefUrl}><img src={imgUrl} className="IconButtonImg"></img></a>
 		</button>
 	)
 }
@@ -76,7 +76,9 @@ function Nav({menuItemArray, iconWithUrlArray}) {
 			<div className="text-md-left d-none d-lg-block col-lg-5 text-center row flex-column justify-content-center">
 					<NavMenu menuItemArray={menuItemArray}/>
 			</div>
-				<NavHeader />
+			<div className="col-2">
+				<a href="#cover"><NavHeader /></a>
+			</div>
 			<div className="col-lg-4 offset-lg-1 col-md-12 offset-md-0 col-xs-12 offset-xs-0 text-sm-center text-md-center text-lg-end d-none d-lg-block">
 				<IconButtonSet iconWithUrl={iconWithUrlArray}/>
 			</div>
@@ -166,7 +168,7 @@ function NavHeader() {
 function CoverStartControl() {
 	return (
 		<div id="coverBottom" className="row flex-column justify-content-end text-center">
-			<div className="col-12 text-center">
+			<div className="col-10 offset-1 text-center">
 				<img src="/static/halfave/img/Arrow.svg"></img>
 			</div>
 		</div>
@@ -346,7 +348,7 @@ ReactDOM.createRoot( document.getElementById('sec3Para'))
 	//.render(<Paragraph text={"Decentralization provides global access to designers, athletes, fitness influencers, gamers, and anyone else who wants to populate our unique fashion-first, wellness ecosystem."}/>);
 
 ReactDOM.createRoot( document.getElementById('sec3BottomText'))
-	.render(<BottomText leftText={"THE BASKETBALL COURT"} rightText={"X11, Y28, Z60"}/>);
+	.render(<BottomText leftText={"THE FOOTBALL COURT"} rightText={"X11, Y28, Z60"}/>);
 ReactDOM.createRoot( document.getElementById('sec4Dots'))
 	.render(<DotsArray direction={0} dotsNum={3} color={"#fc70ff"} size={"5px"} />);
 ReactDOM.createRoot( document.getElementById('sec4Para'))
