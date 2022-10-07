@@ -63,6 +63,11 @@ div#navBaseLine {
 #navFill {
 	height: calc(37.5vh - 165px);
 }
+#navA {
+	display: inline-block;
+	height: auto;
+	width: auto;
+}
 .IconButton {
 	width: 40px;
 	height: 40px;
@@ -220,7 +225,6 @@ div#cover>#coverCenter {
 	height: 30px;
 	vertical-align: middle;
 	position: relative;
-	left: -1vh;
 	margin: auto;
 }
 

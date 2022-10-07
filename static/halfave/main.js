@@ -76,8 +76,8 @@ function Nav({menuItemArray, iconWithUrlArray}) {
 			<div className="text-md-left d-none d-lg-block col-lg-5 text-center row flex-column justify-content-center">
 					<NavMenu menuItemArray={menuItemArray}/>
 			</div>
-			<div className="col-lg-2 col-md-12 col-sm-12 col-xs-12">
-				<a href="#cover"><NavHeader /></a>
+			<div className="col-lg-2 col-md-12 col-sm-12 col-xs-12 text-center">
+				<a href="#cover" id="navA"><NavHeader /></a>
 			</div>
 			<div className="col-lg-4 offset-lg-1 col-md-12 offset-md-0 col-xs-12 offset-xs-0 text-sm-center text-md-center text-lg-end d-none d-lg-block">
 				<IconButtonSet iconWithUrl={iconWithUrlArray}/>
@@ -160,7 +160,7 @@ function CoverHeader() {
 }
 function NavHeader() {
 	return (
-		<div className="NavHeader flex-column justify-content-center text-center col-lg-2 " id="navHeader">
+		<div className="NavHeader flex-column justify-content-center text-center" id="navHeader">
 			<img src="/static/halfave/img/BigLogo.svg" className="center-block"></img>
 		</div>
 	)
