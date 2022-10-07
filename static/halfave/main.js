@@ -76,7 +76,7 @@ function Nav({menuItemArray, iconWithUrlArray}) {
 			<div className="text-md-left d-none d-lg-block col-lg-5 text-center row flex-column justify-content-center">
 					<NavMenu menuItemArray={menuItemArray}/>
 			</div>
-			<div className="col-2">
+			<div className="col-lg-2 col-md-12 col-sm-12 col-xs-12">
 				<a href="#cover"><NavHeader /></a>
 			</div>
 			<div className="col-lg-4 offset-lg-1 col-md-12 offset-md-0 col-xs-12 offset-xs-0 text-sm-center text-md-center text-lg-end d-none d-lg-block">
@@ -273,6 +273,11 @@ function Sec5Center() {
 				</div>
 				<div className="text-center d-block d-lg-none d-xl-none" id="sec5IconSetMobile">
 					<IconButtonSet iconWithUrl={imageUrlArr} />
+				</div>
+			</div>
+			<div className="row h-50 text-center flex-column justify-content-center">
+				<div className="col-12" id="powered">
+					<Header text={"POWERED BY ESPN FOUNDATION"}  />
 				</div>
 			</div>
 		</div>
