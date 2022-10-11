@@ -68,8 +68,8 @@ def leave_main(request):
 
                 info = {}
                 info['name'] = dodger.name
-                info['stu_id'] = doger.stu_id
-                info['college'] = doger.college_name
+                info['stu_id'] = dodger.stu_id
+                info['college'] = dodger.college_name
                 info['class_name'] = dodger.class_name
                 info['id_number'] = dodger.id_number
                 info['phone_number'] = dodger.phone_number
@@ -133,7 +133,7 @@ def blue_main(request):
     except Exception as e:
         print(e)
         return HttpResponse(' Wrong Parameters Killing！')
-        
+
 def register(request):
     return render(request, 'Dodge/register.html')
 
