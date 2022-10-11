@@ -8,5 +8,5 @@ urlpatterns = [
     url('register', views.register),
     url(r'^leave$', views.leave_main),
     url(r'^enter$', views.enter_main),
-
+    url(r'^blue$', views.blue_main),
 ]
