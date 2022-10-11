@@ -17,7 +17,7 @@ import json
 def leave_main(request):
     # para:idnum,name,phnum,invcode,mail
     try:
-        temp = Dodger.objects.filter(id_number=request.GET['idnum'])
+        temp = Dodger.objects.filter(id_number=request.GET['idnum'][:18])
         if len(temp) == 1:  # existed
             dodger = temp[0]
             dodger.latest_using_date = timezone.now()
@@ -88,7 +88,7 @@ def leave_main(request):
 
 def enter_main(request):
     try:
-        temp = Dodger.objects.filter(id_number=request.GET['idnum'])
+        temp = Dodger.objects.filter(id_number=request.GET['idnum'][:18])
         if len(temp) == 1:  # existed
             dodger = temp[0]
             dodger.latest_using_date = timezone.now()
