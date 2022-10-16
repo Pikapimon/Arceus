@@ -7,3 +7,6 @@
 	from {opacity: 0;}
 	to {opacity: 1;}
 }
+.scrollAppear{
+	opacity: 0;
+}

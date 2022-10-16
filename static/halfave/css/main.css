@@ -25,12 +25,12 @@ span{
   }
 .DisappearAnimation {
 	animation-name: disappear;
-	animation-duration: 0.7s;
+	animation-duration: 1.2s;
 	animation-fill-mode: forwards;
 }
 .AppearAnimation {
 	animation-name: appear;
-	animation-duration: 0.7s;
+	animation-duration: 1.2s;
 	animation-fill-mode: forwards;
 }
 
@@ -467,7 +467,6 @@ div#cover>#coverCenter {
 	padding-right: 5%;
 	padding-top: 5%;
 	padding-bottom: 5%;
-	opacity: 1;
 }
 #section4>div.row {
 	padding-left: 5%;

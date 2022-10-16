@@ -372,6 +372,14 @@ function TriggerAppear(domId) {
 	document.getElementById(domId).classList.remove("DisappearAnimation");
 	document.getElementById(domId).classList.add("AppearAnimation");
 }
+function TriggerAppearByDom(dom){
+	dom.classList.remove("DisappearAnimation");
+	dom.classList.add("AppearAnimation");
+}
+function TriggerDisappearByDom(dom){
+	dom.classList.remove("AppearAnimation");
+	dom.classList.add("DisappearAnimation");
+}
 
 window.onscroll = function() {
 	var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
@@ -384,5 +392,14 @@ window.onscroll = function() {
 		TriggerDisappear("navHeader");
 		TriggerAppear("coverHeader");
 		setTimeout(() => {TriggerAppear("coverSlideControl")}, 300);
+	}
+	//console.log(document.getElementById("section5").getBoundingClientRect().top);
+	var eleArr = document.getElementsByClassName("scrollAppear");
+	for (let i = 0; i < eleArr.length; i++) {
+		const ele = eleArr[i];
+		console.log(ele.getBoundingClientRect().top);
+		if(ele.getBoundingClientRect().top < window.innerHeight/2){
+			TriggerAppearByDom(ele);
+		}
 	}
   }
