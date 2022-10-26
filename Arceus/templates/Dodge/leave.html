@@ -130,6 +130,17 @@
 					<tr><td>学&emsp;&emsp;号</td><td>{{stu_id}}</td></tr>
 					<tr><td>姓&emsp;&emsp;名</td><td>{{name}}</td></tr>
 					<tr><td class="red">性&emsp;&emsp;别</td><td>{{gender}}</td></tr>
+					<tr>
+						<td class="red">校&emsp;&emsp;区</td><td style="text-align:left;">
+							<div>
+								<div style="display:inline-block;height: 30px;width:30px;border:1px solid #cccccc;border-radius: 15px;margin-right: 20px;box-shadow: inset 1px 1px 5px #dddddd;background-color: white;"><div style="width: 16px;height: 16px;border-radius: 10px;background-color: #cccccc;margin: auto;margin-top: 6px;"></div></div>
+								<label for="yes">校本部</label></div>
+								<div>
+									<div style="display:inline-block;height: 30px;width:30px;border:1px solid #cccccc;border-radius: 15px;margin-right: 20px;box-shadow: inset 1px 1px 5px #dddddd;"></div>
+									<label for="no">金牛湖园区</label>
+								</div>
+						</td>
+					</tr>
 					<tr><td class="red">联系方式</td><td>{{phone_number}}</td></tr>
 					<tr><td>所在院系</td><td>{{college}}</td></tr>
 					<tr><td class="red">专&emsp;&emsp;业</td><td>{{major}}</td></tr>
@@ -138,15 +149,31 @@
 					<tr><td class="red">辅导员姓名</td><td>{{instructor_name}}</td></tr>
 					<tr style="height:90px;"><td colspan="2"></td></tr>
 					<tr><td class="red">选择类型</td><td style="text-align:left;">事假</td></tr>
-					<tr><td class="red">是否离宁</td><td style="text-align:left;">
+					<tr>
+						<td class="red">是否离宁</td><td style="text-align:left;">
 						<div>
 							<div style="display:inline-block;height: 30px;width:30px;border:1px solid #cccccc;border-radius: 15px;margin-right: 20px;box-shadow: inset 1px 1px 5px #dddddd;background-color: white;"></div>
 							<label for="yes">是</label></div>
 							<div>
-								<div style="display:inline-block;height: 30px;width:30px;border:1px solid #cccccc;border-radius: 15px;margin-right: 20px;box-shadow: inset 1px 1px 5px #dddddd;background-color: "><div style="width: 16px;height: 16px;border-radius: 10px;background-color: #cccccc;margin: auto;margin-top: 6px;"></div></div>
+								<div style="display:inline-block;height: 30px;width:30px;border:1px solid #cccccc;border-radius: 15px;margin-right: 20px;box-shadow: inset 1px 1px 5px #dddddd;"><div style="width: 16px;height: 16px;border-radius: 10px;background-color: #cccccc;margin: auto;margin-top: 6px;"></div></div>
 								<label for="no">否</label>
 							</div>
-						</td></tr>
+						</td>
+					</tr>
+					<tr>
+						<td class="red">是否出校</td><td style="text-align:left;">
+						<div>
+							<div style="display:inline-block;height: 30px;width:30px;border:1px solid #cccccc;border-radius: 15px;margin-right: 20px;box-shadow: inset 1px 1px 5px #dddddd;background-color: white;"><div style="width: 16px;height: 16px;border-radius: 10px;background-color: #cccccc;margin: auto;margin-top: 6px;"></div></div>
+							<label for="no">是</label></div>
+							<div>
+								<div style="display:inline-block;height: 30px;width:30px;border:1px solid #cccccc;border-radius: 15px;margin-right: 20px;box-shadow: inset 1px 1px 5px #dddddd;"></div>
+								<label for="yes">否</label>
+							</div>
+						</td>
+					</tr>
+					<tr style="height:90px;color:red;font-weight: bolder;"><td colspan="2">
+						若出校请选择“是”，否则无法获取出校二维码。
+					</td></tr>
 						<tr><td class="red" rowspan="3">去向目的地</td><td style="font-size:40px;">江苏省<tr><td style="font-size:40px;">南京市</td></tr><tr><td style="font-size:40px;">江北新区</td></tr></td></tr>
 						<tr>
 							<td class="red">请假事由</td>
@@ -161,7 +188,7 @@
 							<td style="padding:0px;height:104px;">
 
 								<table class="none" style="width:100%;height:178px;">
-									<tr><td style="width:50%;font-size:32px;">{{now_date}}</td><td style="width:50%;font-size:40px;">8:00</td></tr>
+									<tr><td style="width:50%;font-size:32px;">{{now_date}}</td><td style="width:50%;font-size:32px;">8:00</td></tr>
 								</table>
 							</td>
 						</tr>
@@ -170,7 +197,7 @@
 							<td style="padding:0px;height:104px;">
 
 								<table class="none" style="width:100%;height:178px;">
-									<tr><td style="width:50%;font-size:32px;">{{now_date}}</td><td style="width:50%;font-size:40px;">23:00</td></tr>
+									<tr><td style="width:50%;font-size:32px;">{{now_date}}</td><td style="width:50%;font-size:32px;">23:00</td></tr>
 								</table>
 							</td>
 						</tr>
@@ -192,7 +219,7 @@
 					<tr style="margin-top: 10px;"><td  rowspan="2">辅导员意见</td>
 						<td style="text-align: left;">
 							<div>
-								<div style="display:inline-block;height: 30px;width:30px;border:1px solid #cccccc;border-radius: 15px;margin-right: 20px;box-shadow: inset 1px 1px 5px #dddddd;background-color: "><div style="width: 16px;height: 16px;border-radius: 10px;background-color: #cccccc;margin: auto;margin-top: 6px;"></div>
+								<div style="display:inline-block;height: 30px;width:30px;border:1px solid #cccccc;border-radius: 15px;margin-right: 20px;box-shadow: inset 1px 1px 5px #dddddd;"><div style="width: 16px;height: 16px;border-radius: 10px;background-color: #cccccc;margin: auto;margin-top: 6px;"></div>
 							</div>
 							<label for="yes">同意</label>
 						</div>
@@ -204,26 +231,26 @@
 						<div><div style="display:inline-block;height: 30px;width:30px;border:1px solid #cccccc;border-radius: 15px;margin-right: 20px;box-shadow: inset 1px 1px 5px #dddddd;background-color: white;"></div><label for="no">不同意</label></div>
 					</td>
 				</tr>
-				<tr><td><div style="height: 200px;"></div></td></tr>
+				<tr><td><div style="height: 200px;font-size: 40px;text-align: left;">同意</div></td></tr>
 				<tr><td>审批人</td><td>{{instructor_name}}</td></tr>
 				<tr><td>审批时间</td><td>{{now_date}}</td></tr>
 				<tr style="margin-top: 10px;"><td  rowspan="2">学院分管学生工作副书记意见意见</td><td style="text-align: left;">
 					<div>
-						<div style="display:inline-block;height: 30px;width:30px;border:1px solid #cccccc;border-radius: 15px;margin-right: 20px;box-shadow: inset 1px 1px 5px #dddddd;background-color: "><div style="width: 16px;height: 16px;border-radius: 10px;background-color: #cccccc;margin: auto;margin-top: 6px;"></div>
+						<div style="display:inline-block;height: 30px;width:30px;border:1px solid #cccccc;border-radius: 15px;margin-right: 20px;box-shadow: inset 1px 1px 5px #dddddd;"><div style="width: 16px;height: 16px;border-radius: 10px;background-color: #cccccc;margin: auto;margin-top: 6px;"></div>
 					</div>
 					<label for="yes">同意</label>
 				</div>
 				<div><div style="display:inline-block;height: 30px;width:30px;border:1px solid #cccccc;border-radius: 15px;margin-right: 20px;box-shadow: inset 1px 1px 5px #dddddd;background-color: white;"></div><label for="no">退回</label></div>
 				<div><div style="display:inline-block;height: 30px;width:30px;border:1px solid #cccccc;border-radius: 15px;margin-right: 20px;box-shadow: inset 1px 1px 5px #dddddd;background-color: white;"></div><label for="no">不同意</label></div>
 			</td></tr>
-			<tr><td><div style="height: 200px;"></div></td></tr>
+			<tr><td><div style="height: 200px;font-size: 40px;text-align: left;">同意</div></td></tr>
 			<tr><td>审批人</td><td>{{secretary_name}}</td></tr>
 			<tr><td>审批时间</td><td>{{now_date}}</td></tr>
 			<tr><td>苏康码</td><td><div style="width: 70%;margin-left: 15%;border:2px dashed gray"><img src="{% static 'Dodge/qrCodeImg.png' %}" style="width:100%" ></div ></td></tr>
 			<tr><td>行程码</td><td><div style="width: 70%;margin-left: 15%;border:2px dashed gray"><img src="{% static 'Dodge/qrCodeImg.png' %}" style="width:100%" ></div ></td></tr>
-			<tr><td>24小时内核酸检测1</td><td><div style="width: 70%;margin-left: 15%;border:2px dashed gray"><img src="{% static 'Dodge/qrCodeImg.png' %}" style="width:100%" ></div ></td></tr>
+			<tr><td>24小时内核酸检测</td><td><div style="width: 70%;margin-left: 15%;border:2px dashed gray"><img src="{% static 'Dodge/qrCodeImg.png' %}" style="width:100%" ></div ></td></tr>
 			<tr><td>销假人</td><td>{{name}}</td></tr>
-			<tr><td>销假时间</td><td><div style="border:1px solid #0560a6;border-radius: 10px;height: 90%;background-color: white;"><div style="width: 10%;margin-left: 90%;"><img src="{% static 'Dodge/calen.png' %}" style="width:80%"></div></div></td></tr>
+			<tr><td>销假时间</td><td><div style="border:1px solid #0560a6;border-radius: 10px;height: 90%;background-color: white;"><div style="width: 10%;margin-left: 90%;"><img src="{% static 'Dodge/calen.png' %}" style="width:80%;opacity: 0;"></div></div></td></tr>
 			<tr><td colspan="2" style="color:rgb(218, 0, 0)">提示：请在销假时问当天进校，超过销假时间则无法进校。</td></tr>
 
 		</table>
@@ -244,7 +271,7 @@
 			<span>正在填写/办理</span>
 			<span style="font-weight: bold;">申请人销假</span>
 		</div>
-		<div style="width:50%;margin:auto;" id="history_line"><div style="text-align: center;"><span style="display:inline-block;transform: rotate(90deg);">&raquo;</span><span style="font-size: 80%;">&nbsp;点击展开2个较早历史</span></div></div>	
+		<div style="width:50%;margin:auto;" id="history_line"><div style="text-align: center;"><span style="display:inline-block;transform: rotate(90deg);">&raquo;</span><span style="font-size: 80%;">&nbsp;点击展开3个较早历史</span></div></div>	
 		<span style="display: none;" id="history_block">
 			<div style="height: 0;border-top: 2px solid gray"></div>
 			<div style="padding-bottom: 20px;">
